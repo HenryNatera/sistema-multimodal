@@ -15,6 +15,10 @@ class academicaController extends Controller
         return view('academica/profesores', compact('profesores'));
     }
 
+    public function horarios_show(){
+        return view('academica/horarios');
+    }
+
     public function profesor_data(Professor $profesor){
         $pnfs = Pnf::all();
         $regulares = Regular::all();

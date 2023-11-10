@@ -80,6 +80,7 @@ Route::controller(docenciaController::class)->group(function(){
 
 Route::controller(academicaController::class)->group(function(){
 	Route::get('utdft/academica/', 'profesores_listado')->name('academica.profesores.show')->middleware('auth');
+	Route::get('utdft/academica/horarios', 'horarios_show')->name('academica.horarios.show')->middleware('auth');
 	Route::get('utdft/academica/profesor/{profesor}', 'profesor_data')->name('academica.professor.data')->middleware('auth');
 	Route::get('utdft/academica/revision/{profesor}/{pnf}', 'pnf_revision')->name('academica.pnf.revision')->middleware('auth');
 	Route::get('utdft/academica/horario/{profesor}/{pnf}/{trim}', 'regular_revision')->name('academica.regular.revision')->middleware('auth');
