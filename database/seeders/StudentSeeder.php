@@ -15,22 +15,28 @@ class StudentSeeder extends Seeder
     {
         Student::create([
             'user_id' => '3',
-            'pnf' => 'informatica',
-            'trayecto' => '2',
+            'pnf_id' => '1',
+            'trayecto' => 'ii',
+            'periodo_id' => 1,
+            'turno' => 0,
             'student_cedula' => '27633694',
         ]);
 
         Student::create([
             'user_id' => '4',
-            'pnf' => 'administracion',
-            'trayecto' => '3',
+            'pnf_id' => '2',
+            'trayecto' => 'iii',
+            'periodo_id' => 1,
+            'turno' => 0,
             'student_cedula' => '26633694',
         ]);
 
         Student::create([
             'user_id' => '5',
-            'pnf' => 'turismo',
-            'trayecto' => '1',
+            'pnf_id' => '3',
+            'trayecto' => 'i',
+            'periodo_id' => 1,
+            'turno' => 1,
             'student_cedula' => '25633694',
         ]);
     }

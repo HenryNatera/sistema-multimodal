@@ -317,30 +317,79 @@ return [
 
         ['header' => 'Lo demas', 'can' => 'master.test',],
 
-//===================== COORDINADOR ============================
+//===================== CONTROL ESTUDIO ============================
 
 [
-    'text' => 'Consultar Malla',
-    'route' => 'pnf.malla.show',
-    'can' => 'pnf.malla',
+    'text' => 'Estudiantes',
+    'can' => 'control.oferta.academica',
+    'submenu' => [
+        [
+            'text' => 'Inscribir',
+            'route' => 'control.users.pendientes'
+        ],
+        [
+            'text' => 'Registrados',
+            'route' => 'control.students'
+        ],
+        [
+            'text' => 'Egresados',
+            'route' => 'control.students.egresados'
+        ]
+    ]
 ],
+
+        //===================== COORDINADOR ============================
+
+    [
+        'text' => 'Consultar Malla',
+        'route' => 'pnf.malla.show',
+        'can' => 'pnf.malla',
+    ],
+    [
+        'text' => 'Oferta Academica',
+        'route' => 'coordinador.ofertas.academicas',
+        'can' => 'pnf.malla',
+    ],
+    [
+        'text' => 'Solicitudes',
+        'route' => 'coordinador.solicitudes',
+        'can' => 'pnf.malla',
+    ],
+    [
+        'text' => 'Horarios',
+        'can' => 'pnf.malla',
+        'submenu' => [
+            [
+                'text' => 'Mañana',
+                'route' => 'coordinador.horarios.m'
+            ],
+            [
+                'text' => 'Tarde',
+                'route' => 'coordinador.horarios.t'
+            ]
+        ]
+    ],
 
 //===================== Docencia ============================
 
-[
-    'text' => 'Registro de profesores',
-    'route' => 'docencia.profesores.show',
-    'can' =>   'docencia.profesores.show',
-],
+    [
+        'text' => 'Registro de profesores',
+        'route' => 'docencia.profesores.show',
+        'can' =>   'docencia.profesores.show',
+    ],
 
 //===================== ACADEMICA ============================
 
-[
-    'text' => 'Registro de profesores',
-    'route' => 'academica.profesores.show',
-    'can' =>   'academica.profesores.show',
-],
-
+    [
+        'text' => 'Registro de profesores',
+        'route' => 'academica.profesores.show',
+        'can' =>   'academica.profesores.show',
+    ],
+    [
+        'text' => 'Horarios',
+        'route' => 'academica.horarios.show',
+        'can' =>   'academica.profesores.show',
+    ],
 //==================== ACREDITABLE ============================
 
         [
@@ -364,18 +413,12 @@ return [
             'icon' => 'fas fa-fw fa-book',
             'can'  => 'professor.asignaturas.resumen',
         ],
-        [
-            'text' => 'Registrar Acreditable',
-            'route'  => 'home',
-            'icon' => 'fas fa-fw fa-book',
-            'can'  => 'professor.asignaturas.resumen',
-        ],
-        
+
 //==================== ESTUDDIANTE ==========================
 
         [
             'text' => 'Inscripcion (regulares)',
-            'url'  => 'admin/settings',
+            'route'  => 'student.inscripcion.regulares',
             'icon' => 'fas fa-fw fa-book',
             'can'  => 'student.asignaturas.show',
         ],
@@ -399,7 +442,7 @@ return [
         ],
         [
             'text' => 'Solicitudes en Linea',
-            'url'  => 'admin/settings',
+            'route'  => 'student.solicitudes.show',
             'icon' => 'fas fa-fw fa-book',
             'can'  => 'student.asignaturas.show',
         ],
@@ -420,44 +463,6 @@ return [
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-book',
             'can'  => 'student.asignaturas.show',
-        ],
-        [
-            'text'    => 'multilevel',
-            'icon'    => 'fas fa-fw fa-share',
-            'submenu' => [
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
-                [
-                    'text'    => 'level_one',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'level_two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
-            ],
         ],
         
     ],

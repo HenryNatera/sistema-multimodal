@@ -21,10 +21,19 @@ return new class extends Migration
             $table->string('regular_turno')->nullable();
             $table->string('regular_modalidad')->nullable();
             $table->string('regular_trayecto')->nullable();
+            $table->string('regular_trimestre')->nullable();
+            $table->string('regular_semestre')->nullable();
             $table->unsignedBigInteger('pnf_id')->nullable();
             $table->foreign('pnf_id')
                          ->references('id')->on('pnfs')
                          ->onDelete('set null');
+            $table->unsignedBigInteger('periodo_id')->nullable();
+            $table->foreign('periodo_id')
+                         ->references('id')->on('periodos')
+                         ->onDelete('set null');
+            $table->string('clasroom_url')->nullable();
+            $table->string('zoom_url')->nullable();
+            $table->string('otro_url')->nullable();
             $table->timestamps();
         });
     }

@@ -19,7 +19,6 @@
             <p  style="font-size: 15px">{{Auth::user()->cedula}}</p>
         </div>
     </div>
-
     @if (Auth::user()->role == 'Estudiante')
         
         <div class="card" style="width: 12rem">

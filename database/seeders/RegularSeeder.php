@@ -18,7 +18,8 @@ class RegularSeeder extends Seeder
             'user_id' => '6',
             'regular_modalidad' => '1',
             'regular_trayecto' => 'ii',
-            'pnf_id' => '1',
+            'pnf_id' => 1,
+            'periodo_id' => 1,
         ]);
 
         Regular::create([
@@ -26,7 +27,8 @@ class RegularSeeder extends Seeder
             'user_id' => '7',
             'regular_modalidad' => '1',
             'regular_trayecto' => 'ii',
-            'pnf_id' => '2',
+            'pnf_id' => 2,
+            'periodo_id' => 1,
         ]);
 
         Regular::create([
@@ -34,7 +36,8 @@ class RegularSeeder extends Seeder
             'user_id' => '8',
             'regular_modalidad' => '2',
             'regular_trayecto' => 'ii',
-            'pnf_id' => '3',
+            'pnf_id' => 3,
+            'periodo_id' => 1,
         ]);
     }
 }

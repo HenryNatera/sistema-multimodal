@@ -18,7 +18,9 @@
     <div class="card-body">
         <ul class="list-group list-group-flush">
             @foreach ($regulares as $regular)
-                <li class="list-group-item py-0 px-4"><a style="color:#000; text-transform:capitalize;" href="{{route('professor.regular.data', $regular)}}">{{$regular->regular_name}} <b style="text-transform: uppercase; font-weight:400;">{{$regular->regular_trayecto}}</b></a></li>
+            @if ($regular->user_id == Auth::user()->id)
+                <li class="list-group-item py-0 px-4"><a style="color:#000; text-transform:capitalize;" href="{{route('professor.regular.data', $regular)}}">{{$regular->regular_name}} <b style="text-transform: uppercase; font-weight:400;">{{$regular->regular_trayecto}}</b></a></li>                
+            @endif
             @endforeach
         </ul>
         

@@ -65,6 +65,14 @@ class User extends Authenticatable
     public function regulars(){
         return $this->hasMany('App\Models\Regular');
     }
+
+    public function regular_horarios(){
+        return $this->hasMany('App\Models\RegularHorarios');
+    }
+
+    public function solicitudes_students(){
+        return $this->hasMany('App\Models\SolicitudesStudent');
+    }
     
 
 }

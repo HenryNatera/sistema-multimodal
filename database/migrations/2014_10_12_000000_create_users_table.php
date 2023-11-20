@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('cedula')->unique();
             $table->string('email')->unique()->nullable();
             $table->string('password');
+            $table->integer('status');
+            $table->string('genero');
             $table->rememberToken();
             $table->timestamps();
         });

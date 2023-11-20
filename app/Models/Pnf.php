@@ -13,6 +13,10 @@ class Pnf extends Model
         return $this->belongsTo('App\Models\User');
     }
 
+    public function students(){
+        return $this->hasMany('App\Models\Student');
+    }
+
     public function regulars(){
         return $this->hasMany('App\Models\Regular');
     }
@@ -23,6 +27,14 @@ class Pnf extends Model
 
     public function semestral_mallas(){
         return $this->hasMany('App\Models\Semestral_malla');
+    }
+
+    public function regular_horarios(){
+        return $this->hasMany('App\Models\Semestral_malla');
+    }
+
+    public function solicitudes_students(){
+        return $this->hasMany('App\Models\SolicitudesStudent');
     }
     
 }

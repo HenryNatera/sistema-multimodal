@@ -11,10 +11,11 @@
 @stop
 
 @section('content')
-    <div class="card" >
+    <div class="card"  style="width: 50%">
         <div class="card-header">
         </div>
-        <div class="card-body" style="width: 40%">
+        <div class="card-body w-75">
+        <p>{{$re->regular->regular_name}} {{$re->regular->regular_trayecto}}</p>
             <table class="table" style="font-size: 14px; border:1px solid rgba(0,0,0,0.2);">
                 <thead>
                     <tr>
@@ -23,15 +24,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($evaluations as $evaluation)
-                @if ($evaluation->user_id == Auth::user()->id && $evaluation->regular_id == $re->id)
+                    @foreach ($res as $evaluation)
                     <tr>
                         <td style="padding: 0 0 0 15px;">{{$evaluation->evaluation_type}}</td>
                         <td style="padding: 0 0 0 15px;">{{$evaluation->ponderacion}}</td>
                     </tr>
-                @endif
 
                 @endforeach
+                <tr>
+                    <th style="padding: 0 0 0 15px;">Final</th>
+                    <td style="padding: 0 0 0 15px;">#</td>
+                </tr>
                 </tbody>
             </table>
         </div>

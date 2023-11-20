@@ -13,5 +13,17 @@ class Student extends Model
         return $this->belongsTo('App\Models\User');
     }
 
+    public function pnf(){
+        return $this->belongsTo('App\Models\Pnf');
+    }
+
+    public function periodo(){
+        return $this->belongsTo('App\Models\Periodo');
+    }
+
+    public function solicitudes_students(){
+        return $this->hasMany('App\Models\SolicitudesStudent');
+    }
+
     
 }

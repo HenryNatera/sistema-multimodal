@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Evaluation;
+use App\Models\Periodo;
 use App\Models\Regular;
 use App\Models\RegularEvaluation;
 use App\Models\Student;
@@ -15,16 +16,19 @@ class professorController extends Controller
     public function asignaturas_resumen()
     {
         $regulares = Regular::all();
+        $student = Student::all();
 
-        return view('professor/asignaturas', compact('regulares'));
+        return view('professor/asignaturas', ['student', $student], compact('regulares'));
     }
 
     public function regular_data(Regular $regular, Student $student){
 
         $students = Student::all();
         $regular_evaluations = RegularEvaluation::all();
+        $re = RegularEvaluation::all();
+        $periodo = Periodo::all();
 
-        return view('professor/regular_data', ['regular' => $regular, 'student' => $student], compact('students', 'regular_evaluations'));
+        return view('professor/regular_data', ['regular' => $regular, 're' => $re, 'student' => $student], compact('students', 'regular_evaluations', 'periodo'));
     }
 
 
@@ -38,5 +42,9 @@ class professorController extends Controller
         $regular= $request->regular_id;
 
         return Redirect()->route('professor.regular.data', ['regular' => $regular]);
+    }
+
+    public function enlaces_store(Request $request, Regular $regular){
+
     }
 }

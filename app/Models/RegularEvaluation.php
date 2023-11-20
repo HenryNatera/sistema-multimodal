@@ -15,6 +15,8 @@ class RegularEvaluation extends Model
      * @var array
      */
 
+     protected $fillable = ['regular_id', 'user_id', 'unidad_i', 'unidad_ii', 'unidad_iii', 'unidad_iv'];
+
     public function user(){
         return $this->belongsTo('App\Models\User');
     }

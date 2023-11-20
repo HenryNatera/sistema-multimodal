@@ -33,7 +33,7 @@
             <tr>
                 <td>{{$av->user->id}}</td>
                 <td>{{$av->user->name}} {{$av->user->last_name}}</td>
-                <td>{{$student->pnf}}</td>
+                <td>{{$student->pnf->pnf_name}}</td>
                     
                 <td>{{$student->trayecto}}</td>
                 <td>{{$av->calificacion}}</td>

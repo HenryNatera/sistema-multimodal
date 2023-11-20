@@ -36,4 +36,12 @@
             </table>
         </div>
     </div>
+
+    <div class="card">
+        <div class="card-body">
+            <form action="{{route('master.regular.store')}}" method="POST">
+            @csrf
+        </form>
+        </div>
+    </div>
 @stop

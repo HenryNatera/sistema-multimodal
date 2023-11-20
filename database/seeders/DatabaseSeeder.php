@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
         $this->call(RoleSeeder::class);
         $this->call(UserSeeder::class);
         $this->call(PnfSeeder::class);
+        $this->call(PeriodoSeeder::class);
         $this->call(ProfessorSeeder::class);
         $this->call(Trimestral_mallaSeeder::class);
         $this->call(Semestral_mallaSeeder::class);

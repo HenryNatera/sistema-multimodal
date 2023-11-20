@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Periodo;
 use App\Models\Pnf;
 use App\Models\Professor;
 use App\Models\Regular;
+use App\Models\RegularHorario;
 use App\Models\Trimestral_malla;
 use Illuminate\Http\Request;
 
@@ -16,9 +18,11 @@ class academicaController extends Controller
     }
 
     public function horarios_show(){
-        return view('academica/horarios');
+        $regular_horarios = RegularHorario::all();
+        $pnfs = Pnf::all();
+        return view('academica/horarios', compact('regular_horarios'));
     }
-
+ 
     public function profesor_data(Professor $profesor){
         $pnfs = Pnf::all();
         $regulares = Regular::all();
@@ -28,13 +32,32 @@ class academicaController extends Controller
     public function pnf_revision(Request $request, Professor $profesor, Pnf $pnf){
         $regulares = Regular::all();
         $trimestrals = Trimestral_malla::all();
-
-        return view('academica/pnf_revision',['pnf' => $pnf, 'profesor' => $profesor],  compact('regulares', 'trimestrals'));
+        $periodo = Periodo::all();
+        return view('academica/pnf_revision',['pnf' => $pnf, 'profesor' => $profesor],  compact('regulares', 'trimestrals', 'periodo'));
     }
     
-    public function regular_revision(Request $request, Professor $profesor, Pnf $pnf, Trimestral_malla $trim){
-        $regulares = Regular::all();
+    public function regular_revision(Request $request, Professor $profesor, Pnf $pnf, Regular $regular){
+        $regular_horarios = RegularHorario::all();
+        $periodo = Periodo::all();
+        return view('academica/regular_revision',['pnf' => $pnf, 'profesor' => $profesor, 'regular' => $regular],  compact('regular_horarios', 'periodo'));
+    }
 
-        return view('academica/regular_revision',['pnf' => $pnf, 'profesor' => $profesor, 'trim' => $trim],  compact('regulares'));
+    public function regular_horario_store(Request $request){
+
+        //===REGULAR
+        $regular = Regular::find($request->regular_id);
+        $regular->user_id = $request->user_id; 
+        $regular->save();
+
+        //===HORARIO
+        $horario = new RegularHorario;
+        $horario->regular_id = $request->regular_id;
+        $horario->hora_entrada = $request->hora_entrada;
+        $horario->hora_salida = $request->hora_salida;
+        $horario->dia = $request->dia;
+        $horario->turno = $request->turno;
+        $horario->save();
+
+        return Redirect()->route('academica.horarios.show');
     }
 }

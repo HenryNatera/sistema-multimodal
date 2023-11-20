@@ -39,4 +39,10 @@ class MasterController extends Controller
         return Redirect()->route('asignatura.test.data', ['regular' => $regular]);
 
     }
+
+    public function regular_store(Request $request){
+        $regular = new Regular;
+        $regular->pnf_id = $request->pnf_id;
+
+    }
 }

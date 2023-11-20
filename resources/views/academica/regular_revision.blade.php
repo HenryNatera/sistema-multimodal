@@ -3,7 +3,7 @@
 @section('title', 'Inicio')
 
 @section('content_header')
-    <h1  style="font-size: 20px; text-transform:capitalize;">Asignacion de horas Trayecto {{$trim->trayecto}}</h1>
+    <h1  style="font-size: 20px; text-transform:capitalize;">Asignacion de horas Trayecto {{$regular->regular_trayecto}}</h1>
 @stop
 @section('css')
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
@@ -16,16 +16,19 @@
             <div class="card-header">
                 <p><b>Nombre:</b> {{$profesor->user->name}} {{$profesor->user->last_name}}</p>
                 <p><b>PNF:</b> {{$pnf->pnf_name}}</p>
-                <p style="text-transform: capitalize;"><b>Unidad Curricular:</b> {{$trim->unidad_curricular}} {{$trim->trayecto}}</p>
+                <p style="text-transform: capitalize;"><b>Unidad Curricular:</b> {{$regular->regular_name}} {{$regular->regular_trayecto}}</p>
             </div>
             <div class="card-body">
-                <form action="">
+                <form action="{{route('academica.regular.horario.store')}}" method="POST">
+                    @csrf 
+                    <input type="hidden" value="{{$regular->id}}" name="regular_id">
+                    <input type="hidden" value="{{$profesor->user_id}}" name="user_id">
                     <div>
                         <label for="turno">Turno</label>
                         <select class="input-group" name="turno" id="turno">
                             <option class="dropdown-item" value="" selected>Seleccione</option>
-                            <option class="dropdown-item" value="Mañana">Mañana</option>
-                            <option class="dropdown-item" value="Tarde">Tarde</option>
+                            <option class="dropdown-item" value="1">Mañana</option>
+                            <option class="dropdown-item" value="2">Tarde</option>
                         </select>
                     </div>
             </div>
@@ -33,19 +36,17 @@
 
         <div class="card ml-4 w-50">
             <div class="card-header pb-0 m-0 d-flex display-flex flex-wrap">
-                <p class="w-50"><b>Horas semanales:</b> 2</p>
-                <p class="w-50"><b>Unidades de Credito:</b> {{$trim->uc_i}}</p>
             </div>
             <div class="card-body d-flex">
                 <div class="w-50">
                     <label for="">Dia</label>
-                    <select class="input-group w-75 mb-3" name="dia_1" id="">
+                    <select class="input-group w-75 mb-3" name="dia" id="">
                         <option value="" selected>Seleccione</option>
-                        <option value="lunes">Lunes</option>
-                        <option value="martes">Martes</option>
-                        <option value="miercoles">Miercoles</option>
-                        <option value="jueves">Jueves</option>
-                        <option value="viernes">Viernes</option>
+                        <option value="1">Lunes</option>
+                        <option value="2">Martes</option>
+                        <option value="3">Miercoles</option>
+                        <option value="4">Jueves</option>
+                        <option value="5">Viernes</option>
                     </select>
                     
                 </div>
@@ -64,76 +65,6 @@
         </div>
     </div>
 
-    <div class="card ml-5 mt-5">
-        <div class="card-body">
-            <table class="table table-bordered table-responsive w-100">
-                <thead>
-                    <tr style="text-align: center;">
-                        <th>Lunes</th>
-                        <th>Martes</th>
-                        <th>Miercoles</th>
-                        <th>Jueves</th>
-                        <th>Viernes</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr style="text-align: center;">
-                        <td>
-                            <p class="my-0">Proyecto</p>
-                            <p class="my-0">7:00</p>
-                            <p class="my-0">8:00</p>
-                        </td>
-                        <td>
-                            <p class="my-0">Proyecto</p>
-                            <p class="my-0">7:00</p>
-                            <p class="my-0">8:00</p>
-                        </td>
-                        <td>
-                            <p class="my-0">Proyecto</p>
-                            <p class="my-0">7:00</p>
-                            <p class="my-0">8:00</p>
-                        </td>
-                        <td>
-                            <p class="my-0">Proyecto</p>
-                            <p class="my-0">7:00</p>
-                            <p class="my-0">8:00</p>
-                        </td>
-                        <td>
-                            <p class="my-0">Proyecto</p>
-                            <p class="my-0">7:00</p>
-                            <p class="my-0">8:00</p>
-                        </td>
-                    </tr>
-                    <tr style="text-align: center;">
-                        <td>
-                            <p class="my-0">Formacion Critica</p>
-                            <p class="my-0">7:00</p>
-                            <p class="my-0">8:00</p>
-                        </td>
-                        <td>
-                            <p class="my-0">Formacion Critica</p>
-                            <p class="my-0">7:00</p>
-                            <p class="my-0">8:00</p>
-                        </td>
-                        <td>
-                            <p class="my-0">Formacion Critica</p>
-                            <p class="my-0">7:00</p>
-                            <p class="my-0">8:00</p>
-                        </td>
-                        <td>
-                            <p class="my-0">Formacion Critica</p>
-                            <p class="my-0">7:00</p>
-                            <p class="my-0">8:00</p>
-                        </td>
-                        <td>
-                            <p class="my-0">Formacion Critica</p>
-                            <p class="my-0">7:00</p>
-                            <p class="my-0">8:00</p>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
+
 </main>
 @stop

@@ -8,26 +8,28 @@
 @section('css')
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="css/input_number.css">
-@stop
-
-@section('content')
-<style>
-    input[type=number]::-webkit-inner-spin-button,
+    <style>
+        input[type=number]::-webkit-inner-spin-button,
     input[type=number]::-webkit-outer-spin-button {
         -webkit-appearance: none;
         margin: 0;
     }
-</style>
+    </style>
+@stop
+
+@section('content')
 
 <main style="display: flex; flex-wrap:wrap; justify-content:space-around;">
+@foreach ($periodo as $p)
     <div class="w-50 px-5">
         <div class="card">
+                
                 <div class="card-header">
                     <h5 style="text-transform:Capitalize;">{{$regular->regular_name}} {{$regular->regular_trayecto}}</h5>
                 </div>
                 <div class="card-body">
                     <p>{{$regular->pnf->pnf_name}}</p>
-                    <p>Estudiantes inscritos: <b>25</b></p>
+                    <p>Estudiantes inscritos: <b>{{$re->where('regular_id', $regular->id)->count()}}</b></p>
                 
                 </div>
 
@@ -84,8 +86,8 @@
 
    <div class="card w-75 my-5">
         <div class="card-body">
-           
-            <table class="table">
+            
+            <table class="table" style="font-size: 13px;">
                 <thead>
                     <tr>
                         <th>Nombre y Apellido</th>
@@ -95,26 +97,29 @@
                         <th>25%</th>
                         <th>25%</th>
                         <th>Final</th>
-
+                        <th>Opciones</th>
                     </tr>
                 </thead>
                 <tbody>
                    @foreach ($regular_evaluations as $r_e)
+                   <form action="{{route('professor.evaluation.update', $r_e)}}" method="POST">
+                    @csrf @method('PATCH')
+                    @if ($r_e->regular_id == $regular->id)
+                        
                        <tr>
                         <td>{{$r_e->user->name}} {{$r_e->user->last_name}}</td>
                         <td>{{$r_e->user->cedula}}</td>
-                        <form action="{{route('professor.evaluation.update', $r_e)}}" method="POST">
-                            @csrf @method('PATCH')
-                            <input type="hidden" name="regular_id" value="{{$regular->id}}">
-                        <td><input style="width: 30px; outline:none; text-align:center;" type="number" name="unidad_i" value="{{old('unidad_i', $r_e->unidad_i)}}"></td>
-                        <td><input style="width: 30px; outline:none; text-align:center;" type="number" name="unidad_ii" value="{{old('unidad_ii', $r_e->unidad_ii)}}"></td>
-                        <td><input style="width: 30px; outline:none; text-align:center;" type="number" name="unidad_iii" value="{{old('unidad_iii', $r_e->unidad_ii)}}"></td>
-                        <td><input style="width: 30px; outline:none; text-align:center;" type="number" name="unidad_iv" value="{{old('unidad_iv', $r_e->unidad_iv)}}"></td>
-                        <td>%</td>
-                        <td><input type="submit" placeholder="Cargar"></td>
-                    </form>
-                    
+                        <input type="hidden" name="user_id" value="{{$r_e->user_id}}">
+                        <input type="hidden" name="regular_id" value="{{$regular->id}}">
+                        <td class="py-1"><input style="width: 30px; outline:none; text-align:center;" type="number" name="unidad_i" value="{{old('unidad_i', $r_e->unidad_i)}}"></td>
+                        <td class="py-1"><input style="width: 30px; outline:none; text-align:center;" type="number" name="unidad_ii" value="{{old('unidad_ii', $r_e->unidad_ii)}}"></td>
+                        <td class="py-1"><input style="width: 30px; outline:none; text-align:center;" type="number" name="unidad_iii" value="{{old('unidad_iii', $r_e->unidad_ii)}}"></td>
+                        <td class="py-1"><input style="width: 30px; outline:none; text-align:center;" type="number" name="unidad_iv" value="{{old('unidad_iv', $r_e->unidad_iv)}}"></td>
+                        <td class="py-1">{{($r_e->unidad_i+$r_e->unidad_ii+$r_e->unidad_iii+$r_e->unidad_iv)/4}}</td>
+                        <td class="py-1"><button style="font-size: 13px;" type="submit" class="btn p-0 btn-primary">Cargar Notas</button></td>
                        </tr>
+                    @endif
+                    </form>
                    @endforeach
                 </tbody>
             </table>
@@ -122,5 +127,6 @@
         </div>
    </div>
    
+@endforeach
 </main>
 @stop

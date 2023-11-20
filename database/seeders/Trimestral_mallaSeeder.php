@@ -53,6 +53,90 @@ class Trimestral_mallaSeeder extends Seeder
             'uc_iii' => 1,
         ]);
 
+        Trimestral_malla::create([
+            'pnf_id' => '1',
+            'unidad_curricular' => 'Matematica',
+            'trayecto' => 'ii',
+            'trimestre_i' => 'CALCULO II',
+            'uc_i' => 3,
+            'trimestre_ii' => 'ALGEBRA LINEAL',
+            'uc_ii' => 3,
+        ]);
+
+        Trimestral_malla::create([
+            'pnf_id' => '1',
+            'unidad_curricular' => 'Redes del computador',
+            'trayecto' => 'ii',
+            'trimestre_i' => 'FUNDAMENTOS Y COMPONENTES DE REDES',
+            'uc_i' => 3,
+            'trimestre_ii' => 'ADMINISTRACIÓN, PRINCIPIOS DE ENRUTAMIENTO Y SUBREDES',
+            'uc_ii' => 3,
+        ]);
+
+        Trimestral_malla::create([
+            'pnf_id' => '1',
+            'unidad_curricular' => 'Formacion Critica',
+            'trayecto' => 'ii',
+            'trimestre_i' => 'INFORMÁTICA, TECNOLOGÍA Y SOCIEDAD I',
+            'uc_i' => 1,
+            'trimestre_ii' => 'INFORMÁTICA, TECNOLOGÍA Y SOCIEDAD II',
+            'uc_ii' => 1,
+            'trimestre_iii' => 'CULTURA, DEPORTE Y RECREACIÓN II',
+            'uc_iii' => 1,
+        ]);
+
+        Trimestral_malla::create([
+            'pnf_id' => '1',
+            'unidad_curricular' => 'PARADIGMAS DE PROGRAMACIÓN',
+            'trayecto' => 'ii',
+            'trimestre_i' => 'PROGRAMACIÓN III',
+            'uc_i' => 4,
+            'trimestre_ii' => 'PROGRAMACIÓN IV',
+            'uc_ii' => 4,
+            'trimestre_iii' => 'PROGRAMACIÓN V',
+            'uc_iii' => 4,
+        ]);
+
+        Trimestral_malla::create([
+            'pnf_id' => '1',
+            'unidad_curricular' => 'PARADIGMAS DE PROGRAMACIÓN',
+            'trayecto' => 'ii',
+            'trimestre_i' => 'PROGRAMACIÓN III',
+            'uc_i' => 4,
+            'trimestre_ii' => 'PROGRAMACIÓN IV',
+            'uc_ii' => 4,
+            'trimestre_iii' => 'PROGRAMACIÓN V',
+            'uc_iii' => 4,
+        ]);
+
+        Trimestral_malla::create([
+            'pnf_id' => '1',
+            'unidad_curricular' => 'IDIOMAS',
+            'trayecto' => 'ii',
+            'trimestre_i' => 'INGLÉS-REDACCIÓN I',
+            'uc_i' => 1,
+            'trimestre_ii' => 'INGLÉS-REDACCIÓN II',
+            'uc_ii' => 1,
+            'trimestre_iii' => 'INGLÉS-REDACCIÓN III',
+            'uc_iii' => 1,
+        ]);
+
+        Trimestral_malla::create([
+            'pnf_id' => '1',
+            'unidad_curricular' => 'BASE DE DATOS',
+            'trayecto' => 'ii',
+            'trimestre_i' => 'BASE DE DATOS',
+            'uc_i' => 3,
+        ]);
+
+        Trimestral_malla::create([
+            'pnf_id' => '1',
+            'unidad_curricular' => 'ELECTIVA II',
+            'trayecto' => 'ii',
+            'trimestre_iii' => 'VOZ, Y TELEFONÍA IP',
+            'uc_iii' => 3,
+        ]);
+
 
 //================ ADMINISTRACION ================================
 

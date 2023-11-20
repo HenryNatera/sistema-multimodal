@@ -18,8 +18,17 @@ return new class extends Migration
                         ->references('id')->on('users')
                         ->onDelete('set null');
             $table->string('student_cedula')->unique();
-            $table->string('pnf');
-            $table->string('trayecto');
+            $table->unsignedBigInteger('pnf_id')->nullable();
+            $table->foreign('pnf_id')
+                        ->references('id')->on('pnfs')
+                        ->onDelete('set null');
+            $table->unsignedBigInteger('periodo_id')->nullable();
+            $table->foreign('periodo_id')
+                        ->references('id')->on('periodos')
+                        ->onDelete('set null');
+            $table->integer('turno');
+            $table->string('trayecto')->nullable();
+            $table->string('semestre')->nullable();
             $table->timestamps();
         });
     }
