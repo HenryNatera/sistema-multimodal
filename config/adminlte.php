@@ -345,6 +345,7 @@ return [
         'route' => 'pnf.malla.show',
         'can' => 'pnf.malla',
     ],
+    
     [
         'text' => 'Oferta Academica',
         'route' => 'coordinador.ofertas.academicas',
@@ -368,6 +369,11 @@ return [
                 'route' => 'coordinador.horarios.t'
             ]
         ]
+    ],
+    [
+        'text' => 'Crear Noticia',
+        'route' => 'coordinador.noticia.create',
+        'can' => 'pnf.malla',
     ],
 
 //===================== Docencia ============================

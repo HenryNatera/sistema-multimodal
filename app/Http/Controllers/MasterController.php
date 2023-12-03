@@ -17,7 +17,8 @@ class MasterController extends Controller
         return view('master/asignaturas', ['professor' => $professor], compact('regulares'));
     }
 
-    public function asignatura_data(Regular $regular, Student $student){
+    public function asignatura_data(Regular $regular, Student $student)
+    {
 
         $students = Student::all();
         $regularEvaluations = RegularEvaluation::all();
@@ -25,7 +26,8 @@ class MasterController extends Controller
         return view('master/asignatura_data', ['regular' => $regular, 'student' => $student], compact('students', 'regularEvaluations'));
     }
 
-    public function regular_inscribir(Request $request, Regular $regular){
+    public function regular_inscribir(Request $request, Regular $regular)
+    {
 
 
         $inscribir = new RegularEvaluation();
@@ -37,12 +39,11 @@ class MasterController extends Controller
 
 
         return Redirect()->route('asignatura.test.data', ['regular' => $regular]);
-
     }
 
-    public function regular_store(Request $request){
+    public function regular_store(Request $request)
+    {
         $regular = new Regular;
         $regular->pnf_id = $request->pnf_id;
-
     }
 }

@@ -21,7 +21,13 @@ use Termwind\Components\Raw;
 
 class studentController extends Controller
 {
-    public function asignaturas(Acreditable $acreditable, User $user){
+    public function __construct()
+    {
+        $this->middleware('can:student.asignaturas.show');
+    }
+
+    public function asignaturas(Acreditable $acreditable, User $user)
+    {
 
         $res = RegularEvaluation::where('user_id', Auth::user()->id)->get();
         $trims = Trimestral_malla::all();
@@ -33,18 +39,20 @@ class studentController extends Controller
         return view('student/asignaturas', ['acreditable' => $acreditable, 'user' => $user, 'student' => $student], compact('res', 'aev', 'trims', 'sems', 'periodo'));
     }
 
-    public function regular_data(RegularEvaluation $re){
+    public function regular_data(RegularEvaluation $re)
+    {
 
         $res = RegularEvaluation::where('user_id', Auth::user()->id)->get();
         return view('student/regular_data', ['re' => $re], compact('res'));
     }
 
-    public function regular_store(Request $request){
+    public function regular_store(Request $request)
+    {
 
         $regular_id = $request->regular_id;
         $data = [];
 
-        for($i = 0; $i < count($regular_id); $i++){
+        for ($i = 0; $i < count($regular_id); $i++) {
             $data[] = [
                 'user_id' => Auth::user()->id,
                 'regular_id' => $regular_id[$i],
@@ -56,23 +64,27 @@ class studentController extends Controller
         return Redirect()->route('student.inscripcion.regulares');
     }
 
-    public function inscripcion_regulares(){
+    public function inscripcion_regulares()
+    {
         $students = Student::where('user_id', Auth::user()->id)->get();
         $regulares = Regular::orderBy('regular_trimestre', 'asc')->get();
         return view('student/inscribir_regulares', compact('regulares', 'students'));
     }
 
-    public function solicitudes_show(){
+    public function solicitudes_show()
+    {
         $students = Student::all();
         return view('solicitudes/solicitudes', compact('students'));
     }
 
-    public function constancias_certificados(Student $student){
+    public function constancias_certificados(Student $student)
+    {
         $solicitudes = SolicitudesStudent::orderBy('id', 'asc')->get();
         return view('solicitudes/constancias_certificaciones', ['student' => $student], compact('solicitudes'));
     }
 
-    public function solicitud_store(Request $request, Student $student){
+    public function solicitud_store(Request $request, Student $student)
+    {
 
         $solicitud = new SolicitudesStudent;
 

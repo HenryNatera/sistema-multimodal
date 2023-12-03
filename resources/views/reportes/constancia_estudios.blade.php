@@ -18,14 +18,19 @@
 </head>
 
 <body>
-    
-    <p>
+    <p style="text-align: cenetr;"><b>Universidad Territorial Deltaica Francisco Tamayo</b></p>
+    <p><B>PNF: {{$solicitud->pnf->pnf_name}}</B></p>
+    <p>Se hace constancia de que 
         @if ($solicitud->user->genero == 'masculino')
-        El estudiante
+        el estudiante
         
     @else
-        La estudiante
-    @endif <b>{{$solicitud->user->name}} {{$solicitud->user->last_name}}</b> estudia aqui</p>
+        la estudiante
+    @endif <b>{{$solicitud->user->name}} {{$solicitud->user->last_name}}, </b>cedula de identidad <b>{{$solicitud->user->cedula}}</b> estudia aqui</p>
+    <br>
+    <br>
+    <br>
+    <p><b>Coordinador: </b> {{$solicitud->pnf->user->name}} {{$solicitud->pnf->user->last_name}}</p>
     
 </body>
 </html>

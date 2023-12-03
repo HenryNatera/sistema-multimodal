@@ -11,15 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pnfs', function (Blueprint $table) {
+        Schema::create('noticias', function (Blueprint $table) {
             $table->id();
-            $table->string('malla_tipo');
-            $table->string('pnf_name')->unique();
-            $table->string('pnf_inicial')->unique();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')
                         ->references('id')->on('users')
                         ->onDelete('set null');
+            $table->string('image_name');
+            $table->string('titulo');
+            $table->text('descripcion');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pnfs');
+        Schema::dropIfExists('noticias');
     }
 };

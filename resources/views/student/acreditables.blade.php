@@ -11,7 +11,7 @@
 @stop
 
 @section('content')
-    <div class="card" >
+    <div class="card">
         <div class="card-header">
         </div>
         <div class="card-body" style="width: 60%">
@@ -23,13 +23,12 @@
                 </thead>
                 <tbody>
                     @foreach ($aev as $ai)
-                @if ($ai->user_id == Auth::user()->id)
-                    <tr>
-                        <td style="padding: 0 0 0 15px;">{{$ai->acreditable->acreditable_name}}</td>
-                    </tr>
-                @endif
-
-                @endforeach
+                        @if ($ai->user_id == Auth::user()->id)
+                            <tr>
+                                <td style="padding: 0 0 0 15px;">{{ $ai->acreditable->acreditable_name }}</td>
+                            </tr>
+                        @endif
+                    @endforeach
                 </tbody>
             </table>
         </div>
@@ -42,19 +41,18 @@
                     <tr>
                         <th style="padding: 0 0 0 15px;">Unidad</th>
                         <th style="padding: 0; text-align:center;">%</th>
-                        
+
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($aev as $ai)
-                @if ($ai->user_id == Auth::user()->id)
-                    <tr>
-                        <td style="padding: 0 0 0 15px;">{{$ai->acreditable->acreditable_name}}</td>
-                        <td style="padding: 0; text-align:center; border-left:1px solid rgba(0,0,0,0.2);">#</td>
-                    </tr>
-                @endif
-
-                @endforeach
+                        @if ($ai->user_id == Auth::user()->id)
+                            <tr>
+                                <td style="padding: 0 0 0 15px;">{{ $ai->acreditable->acreditable_name }}</td>
+                                <td style="padding: 0; text-align:center; border-left:1px solid rgba(0,0,0,0.2);">#</td>
+                            </tr>
+                        @endif
+                    @endforeach
                 </tbody>
             </table>
         </div>

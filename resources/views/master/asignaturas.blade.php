@@ -11,7 +11,7 @@
 @stop
 
 @section('content')
-    
+
     <div class="card">
         <div class="card-body">
             <table class="table">
@@ -26,10 +26,18 @@
                 <tbody>
                     @foreach ($regulares as $regular)
                         <tr>
-                            <td><a style="color:#000;" href="{{route('asignatura.test.data', $regular)}}">{{$regular->regular_name}}</a></td>
-                            <td><a style="color:#000;" href="{{route('asignatura.test.data', $regular)}}">{{$regular->user->name}} {{$regular->user->last_name}}</a></td>
-                            <td><a style="color:#000;" href="{{route('asignatura.test.data', $regular)}}">{{$regular->pnf->pnf_name}}</a></td>
-                            <td style="text-transform: uppercase; text-align:center;"><a style="color:#000;" href="{{route('asignatura.test.data', $regular)}}">{{$regular->regular_trayecto}}</a></td>
+                            <td><a style="color:#000;"
+                                    href="{{ route('asignatura.test.data', $regular) }}">{{ $regular->regular_name }}</a>
+                            </td>
+                            <td><a style="color:#000;"
+                                    href="{{ route('asignatura.test.data', $regular) }}">{{ $regular->user->name }}
+                                    {{ $regular->user->last_name }}</a></td>
+                            <td><a style="color:#000;"
+                                    href="{{ route('asignatura.test.data', $regular) }}">{{ $regular->pnf->pnf_name }}</a>
+                            </td>
+                            <td style="text-transform: uppercase; text-align:center;"><a style="color:#000;"
+                                    href="{{ route('asignatura.test.data', $regular) }}">{{ $regular->regular_trayecto }}</a>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>
@@ -39,9 +47,9 @@
 
     <div class="card">
         <div class="card-body">
-            <form action="{{route('master.regular.store')}}" method="POST">
-            @csrf
-        </form>
+            <form action="{{ route('master.regular.store') }}" method="POST">
+                @csrf
+            </form>
         </div>
     </div>
 @stop

@@ -12,21 +12,29 @@ use Illuminate\Support\Facades\Redirect;
 
 class acreditableController extends Controller
 {
-    public function show(){
+    public function __construct()
+    {
+        $this->middleware('can:acreditables.show');
+    }
+
+    public function show()
+    {
 
         $acreditables = Acreditable::orderBy('id', 'desc')->paginate();
 
         return view('acreditable/show', compact('acreditables'));
     }
 
-    public function create(){
+    public function create()
+    {
 
         $professors = Professor::all();
 
         return view('acreditable/create', compact('professors'));
     }
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         $request->validate([
             'acreditable_name' => 'required|regex:/^[\pL\s\-]+$/u|min:2|max:120',
         ]);
@@ -43,7 +51,8 @@ class acreditableController extends Controller
         return Redirect()->route('acreditable.show');
     }
 
-    public function data(Acreditable $acreditable, Student $student){ 
+    public function data(Acreditable $acreditable, Student $student)
+    {
 
         $acreditables = Acreditable::all();
         $acreditableEvaluations = AcreditableEvaluation::all();
@@ -53,7 +62,8 @@ class acreditableController extends Controller
         return view('acreditable/data', ['acreditable' => $acreditable, 'student' => $student], compact('acreditables', 'user', 'students', 'acreditableEvaluations'));
     }
 
-    public function inscribir(Request $request){
+    public function inscribir(Request $request)
+    {
 
         $inscribir = new AcreditableEvaluation;
 
@@ -63,6 +73,5 @@ class acreditableController extends Controller
         $inscribir->save();
 
         return Redirect()->route('acreditable.show');
-
     }
 }

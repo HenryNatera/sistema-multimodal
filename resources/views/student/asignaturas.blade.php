@@ -15,9 +15,9 @@
         <div class="card-header">
         </div>
         <div class="card-body bg-white" style="width: 100%">
-            
+
             @foreach ($periodo as $p)
-                <p>Trimestre {{$p->trimestre}}</p>
+                <p>Trimestre {{ $p->trimestre }}</p>
             @endforeach
             <table class="table" style="font-size: 14px; border:1px solid rgba(0,0,0,0.2);">
                 <thead>
@@ -29,20 +29,23 @@
                 </thead>
                 <tbody>
                     @foreach ($res as $re)
-                    @if ($re->regular->periodo->trimestre == $re->regular->regular_trimestre)
-                        
-                    <tr>
-                        <td style="padding: 0 0 0 15px;"><a href="{{route('student.regular.data', $re)}}">{{$re->regular->regular_name}}</a></td>
-                        @if ($re->regular->user_id != '')
-                        <td style="padding: 0 0 0 15px;"><a href="{{route('student.regular.data', $re)}}">{{$re->regular->user->name}} {{$re->regular->user->last_name}}</a></td>
-                        @else
-                        <td style="padding: 0 0 0 15px; color:#ccc;">Sin asignar</td>
+                        @if ($re->regular->periodo->trimestre == $re->regular->regular_trimestre)
+                            <tr>
+                                <td style="padding: 0 0 0 15px;"><a
+                                        href="{{ route('student.regular.data', $re) }}">{{ $re->regular->regular_name }}</a>
+                                </td>
+                                @if ($re->regular->user_id != '')
+                                    <td style="padding: 0 0 0 15px;"><a
+                                            href="{{ route('student.regular.data', $re) }}">{{ $re->regular->user->name }}
+                                            {{ $re->regular->user->last_name }}</a></td>
+                                @else
+                                    <td style="padding: 0 0 0 15px; color:#ccc;">Sin asignar</td>
+                                @endif
+                                <td style="padding: 0 0 0 15px;"><a
+                                        href="{{ route('student.regular.data', $re) }}">{{ $re->evaluation_3 }}</a></td>
+                            </tr>
                         @endif
-                        <td style="padding: 0 0 0 15px;"><a href="{{route('student.regular.data', $re)}}">{{$re->evaluation_3}}</a></td>
-                    </tr>
-                    @endif
-
-                @endforeach
+                    @endforeach
                 </tbody>
             </table>
         </div>
@@ -56,22 +59,21 @@
                     <tr>
                         <th style="padding: 0 0 0 15px;">Unidad</th>
                         <th style="padding: 0; text-align:center;">%</th>
-                        
+
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($aev as $ai)
-                @if ($ai->user_id == Auth::user()->id)
-                    <tr>
-                        <td style="padding: 0 0 0 15px;">{{$ai->acreditable->acreditable_name}}</td>
-                        <td style="padding: 0; text-align:center; border-left:1px solid rgba(0,0,0,0.2);">#</td>
-                    </tr>
-                @endif
-
-                @endforeach
+                        @if ($ai->user_id == Auth::user()->id)
+                            <tr>
+                                <td style="padding: 0 0 0 15px;">{{ $ai->acreditable->acreditable_name }}</td>
+                                <td style="padding: 0; text-align:center; border-left:1px solid rgba(0,0,0,0.2);">#</td>
+                            </tr>
+                        @endif
+                    @endforeach
                 </tbody>
             </table>
         </div>
-        
+
     </div>
 @stop

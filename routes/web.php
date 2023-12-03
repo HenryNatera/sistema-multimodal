@@ -11,6 +11,10 @@ use App\Http\Controllers\MasterController;
 use App\Http\Controllers\PDFController;
 use App\Http\Controllers\professorController;
 use App\Http\Controllers\studentController;
+use App\Models\Noticia;
+use App\Models\Pnf;
+use App\Models\Professor;
+use App\Models\Student;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,7 +28,11 @@ use App\Http\Controllers\studentController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+	$students = Student::all();
+	$professors = Professor::all();
+	$pnfs = Pnf::all();
+	$noticias = Noticia::orderBy('id', 'desc')->paginate(6);
+	return view('welcome', ['students' => $students, 'professors' => $professors, 'pnfs' => $pnfs], compact('noticias'));
 })->name('welcome');
 
 Auth::routes();
@@ -58,13 +66,21 @@ Route::controller(controlEstudioController::class)->group(function(){
 //================ COORDINADOR ==============================
 
 Route::controller(coordinatorController::class)->group(function(){
+	//MALLA
 	Route::get('utdft/malla/', 'malla_show')->name('pnf.malla.show')->middleware('auth');
+	//OFERTA ACADEMICA
 	Route::get('utdft/ofertas_academicas/', 'oferta_academica')->name('coordinador.ofertas.academicas')->middleware('auth');
 	Route::post('utdft/oferta/store', 'oferta_store')->name('coordinador.oferta.store')->middleware('auth');
+	//SOLICITUDES
 	Route::get('utdft/solicitudes/resumen', 'solicitudes_show')->name('coordinador.solicitudes')->middleware('auth');
 	Route::patch('utdft/solicitud/{solicitud}/update', 'solicitud_update')->name('coordinador.solicitud.update')->middleware('auth');
+	//HORARIOS
 	Route::get('utdft/pnf/horarios_m', 'horarios_m')->name('coordinador.horarios.m')->middleware('auth');
 	Route::get('utdft/pnf/horarios_t', 'horarios_t')->name('coordinador.horarios.t')->middleware('auth');
+	//NOTICIAS
+	Route::get('utdft/noticias/crear', 'noticia_create')->name('coordinador.noticia.create')->middleware('auth');
+	Route::post('utdft/noticia/store', 'noticia_store')->name('coordinador.noticia.store')->middleware('auth');
+
 });
 
 //=============== ACREDITABLES =============================
