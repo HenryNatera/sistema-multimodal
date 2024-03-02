@@ -16,27 +16,30 @@ class StudentSeeder extends Seeder
         Student::create([
             'user_id' => '3',
             'pnf_id' => '1',
-            'trayecto' => 'ii',
-            'periodo_id' => 1,
+            'malla' => 1,
+            'trayecto' => 2,
             'turno' => 0,
+            'confirm' => 0,
             'student_cedula' => '27633694',
         ]);
 
         Student::create([
             'user_id' => '4',
             'pnf_id' => '2',
-            'trayecto' => 'iii',
-            'periodo_id' => 1,
+            'malla' => 1,
+            'trayecto' => 3,
             'turno' => 0,
+            'confirm' => 0,
             'student_cedula' => '26633694',
         ]);
 
         Student::create([
             'user_id' => '5',
             'pnf_id' => '3',
-            'trayecto' => 'i',
-            'periodo_id' => 1,
+            'malla' => 1,
+            'trayecto' => 1,
             'turno' => 1,
+            'confirm' => 0,
             'student_cedula' => '25633694',
         ]);
     }

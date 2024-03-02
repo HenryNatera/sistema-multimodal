@@ -63,7 +63,7 @@ return [
     |
     */
 
-    'logo' => '<b>SCG@ </b>2.0',
+    'logo' => '<b>SCG@M</b>',
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
@@ -291,22 +291,22 @@ return [
 
     'menu' => [
         // Navbar items:
-        
+
         [
             'type'         => 'fullscreen-widget',
             'topnav_right' => true,
         ],
 
         // Sidebar items:
-        
+
         [
             'text' => 'Datos Personales',
-            'url'  => 'admin/settings',
+            'route'  => 'master.datos.personales',
             'icon' => 'fas fa-fw fa-user',
         ],
 
 
-//======================= MASTER ==============================
+        //======================= MASTER ==============================
         ['header' => 'Master', 'can' => 'master.test',],
 
         [
@@ -317,86 +317,97 @@ return [
 
         ['header' => 'Lo demas', 'can' => 'master.test',],
 
-//===================== CONTROL ESTUDIO ============================
+        //===================== CONTROL ESTUDIO ============================
 
-[
-    'text' => 'Estudiantes',
-    'can' => 'control.oferta.academica',
-    'submenu' => [
         [
-            'text' => 'Inscribir',
-            'route' => 'control.users.pendientes'
+            'text' => 'Gestion de Lapsos',
+            'route' => 'control.periodos.show',
+            'can' => 'control.oferta.academica',
         ],
         [
-            'text' => 'Registrados',
-            'route' => 'control.students'
+            'text' => 'Estudiantes',
+            'can' => 'control.oferta.academica',
+            'submenu' => [
+
+                [
+                    'text' => 'Inscribir/Revision',
+                    'route' => 'control.users.pendientes'
+                ],
+                [
+                    'text' => 'Registrados',
+                    'route' => 'control.students'
+                ],
+                [
+                    'text' => 'Egresados',
+                    'route' => 'control.students.egresados'
+                ]
+            ]
         ],
-        [
-            'text' => 'Egresados',
-            'route' => 'control.students.egresados'
-        ]
-    ]
-],
 
         //===================== COORDINADOR ============================
 
-    [
-        'text' => 'Consultar Malla',
-        'route' => 'pnf.malla.show',
-        'can' => 'pnf.malla',
-    ],
-    
-    [
-        'text' => 'Oferta Academica',
-        'route' => 'coordinador.ofertas.academicas',
-        'can' => 'pnf.malla',
-    ],
-    [
-        'text' => 'Solicitudes',
-        'route' => 'coordinador.solicitudes',
-        'can' => 'pnf.malla',
-    ],
-    [
-        'text' => 'Horarios',
-        'can' => 'pnf.malla',
-        'submenu' => [
-            [
-                'text' => 'Mañana',
-                'route' => 'coordinador.horarios.m'
-            ],
-            [
-                'text' => 'Tarde',
-                'route' => 'coordinador.horarios.t'
+        [
+            'text' => 'Consultar Malla',
+            'route' => 'pnf.malla.show',
+            'can' => 'pnf.malla',
+        ],
+
+        [
+            'text' => 'Oferta Academica',
+            'route' => 'coordinador.ofertas.academicas',
+            'can' => 'pnf.malla',
+        ],
+        [
+            'text' => 'Gestion de Asignaturas',
+            'route' => 'coordinador.asignaturas.show',
+            'can' => 'pnf.malla',
+        ],
+        [
+            'text' => 'Solicitudes',
+            'route' => 'coordinador.solicitudes',
+            'can' => 'pnf.malla',
+        ],
+        [
+            'text' => 'Horarios',
+            'can' => 'pnf.malla',
+            'submenu' => [
+                [
+                    'text' => 'Mañana',
+                    'route' => 'coordinador.horarios.m'
+                ],
+                [
+                    'text' => 'Tarde',
+                    'route' => 'coordinador.horarios.t'
+                ]
             ]
-        ]
-    ],
-    [
-        'text' => 'Crear Noticia',
-        'route' => 'coordinador.noticia.create',
-        'can' => 'pnf.malla',
-    ],
+        ],
+        [
+            'text' => 'Crear Noticia',
+            'route' => 'coordinador.noticia.create',
+            'can' => 'pnf.malla',
+        ],
 
-//===================== Docencia ============================
+        //===================== Docencia ============================
 
-    [
-        'text' => 'Registro de profesores',
-        'route' => 'docencia.profesores.show',
-        'can' =>   'docencia.profesores.show',
-    ],
+        [
+            'text' => 'Registro de docentes',
+            'route' => 'docencia.profesores.show',
+            'can' =>   'docencia.profesores.show',
+        ],
 
-//===================== ACADEMICA ============================
+        //===================== ACADEMICA ============================
 
-    [
-        'text' => 'Registro de profesores',
-        'route' => 'academica.profesores.show',
-        'can' =>   'academica.profesores.show',
-    ],
-    [
-        'text' => 'Horarios',
-        'route' => 'academica.horarios.show',
-        'can' =>   'academica.profesores.show',
-    ],
-//==================== ACREDITABLE ============================
+        [
+            'text' => 'Registro de profesores',
+            'route' => 'academica.profesores.show',
+            'can' =>   'academica.profesores.show',
+        ],
+        [
+            'text' => 'Horarios',
+            'route' => 'academica.horarios.show',
+            'can' =>   'academica.profesores.show',
+        ],
+        //==================== ACREDITABLE ============================
 
         [
             'text' => 'Unidades Acreditables',
@@ -411,7 +422,7 @@ return [
             'can'  => 'acreditable.show',
         ],
 
-//==================== PROFESSOR ============================
+        //==================== PROFESSOR ============================
 
         [
             'text' => 'Resumen de asignaturas',
@@ -420,7 +431,7 @@ return [
             'can'  => 'professor.asignaturas.resumen',
         ],
 
-//==================== ESTUDDIANTE ==========================
+        //==================== ESTUDDIANTE ==========================
 
         [
             'text' => 'Inscripcion (regulares)',
@@ -470,7 +481,7 @@ return [
             'icon' => 'fas fa-fw fa-book',
             'can'  => 'student.asignaturas.show',
         ],
-        
+
     ],
 
     /*

@@ -8,6 +8,11 @@ body{
 	background: #F5F6F8;
 }
 
+main{
+	min-height: 100vh;
+	overflow-x: hidden;
+}
+
 body::-webkit-scrollbar{
 	width: 7px;
 	
@@ -191,6 +196,7 @@ body::-webkit-scrollbar-thumb{
 
 .welcome-login-a:hover{
 	box-shadow: -2px 2px 2px 1px rgba(0, 0, 50, .3);
+	transform: translateY(-5px);
 }
 
 .welcome-login-a:hover .welcome-login-a-h3{
@@ -207,31 +213,47 @@ body::-webkit-scrollbar-thumb{
 /*================================== ESTADISTICAS =================================*/
 
 .stadisticas{
-	width: 90%;
-	margin: 10% auto 0;
+	width: 50%;
+	margin: 5% auto 0;
 	display: flex;
 	justify-content: center;
 	font-family: 'Century Gothic', sans-serif;
 }
 
 .stadisticas div{
-	border-left: 0.5px solid rgba(0, 0, 0, .2);
-	border-right: 0.5px solid rgba(0, 0, 0, .2);
-	width: 16rem;
-	background: #eee;
+	border: 0.5px solid #08285c;
+	width: 15rem;
+	background: #3B82F6;
+	margin: 0 1%;
+	display: flex;
+	flex-wrap: wrap;
+	border-radius: 10px;
+	overflow: hidden;
+	transition: 0.2s;
+}
+
+.stadisticas div:hover{
+	box-shadow: -2px 4px 2px 2px #789eff;
+	transition: 0.1s;
+	font-weight: 700;
+	text-shadow: 0 0 4px #fff;
+	transform: translateY(-3px);
+	
 }
 
 .stadisticas div h4{
-	text-align: center;
-	font-size: 34px;
-	margin: 5% 0 2%;
+	font-size: 20px;
+	width: 70%;
+	font-weight: 500;
+	margin: 5% 0 0 1rem;
+	color: #fff;
 }
 
 .stadisticas div p{
-	text-align: center;
-	margin: 1% 0 2%;
-	font-size: 24px;
-	background: linear-gradient(transparent, rgba(0, 0, 0, .1));
+	margin: 0 0 1rem 1rem;
+	width: 70%;
+	color: #fff;
+	font-size: 14px;
 }
 
 
@@ -241,45 +263,70 @@ body::-webkit-scrollbar-thumb{
 
 .welcome-noticias{
 	margin: 10% 2%;
-	overflow: auto;
 	width: 90%;
-	height: 400px;
 }
 
-.welcome-noticias::-webkit-scrollbar{
+.noticias_container::-webkit-scrollbar{
 	width: 6px;
 	height: 6px;
 	
 }
 
-.welcome-noticias::-webkit-scrollbar-thumb{
+.noticias_container::-webkit-scrollbar-thumb{
 	border-radius: 20px;
 	background: #aaa;
 }
 
-.welcome-noticias div{
-	width: 160%;
+.noticias_container{
+	overflow-x: auto;
+	width: 100%;
+	padding-top: 40px;
+	overflow-y: hidden;
+	align-items: flex-start;
+}
+
+.noticias_cocontainer{
+	max-width: 160%;
+	height: 370px;
 	display: flex;
 	flex-wrap: wrap;
-	align-items: flex-start;
 }
 
 .welcome-noticias h1{
 	width: 100%;
+	height: 50px;
+	justify-content: center;
+	text-align: center;
 	padding: 0 60px;
-	font-family: 'Century Gothic', sans-serif;
+	font-weight: 500;
+	margin-bottom: 1%;
+	display: flex;
+	flex-wrap: wrap;
+	position: relative;
+	font-family: 'Roboto', sans-serif;
+	z-index: 9;
+}
+
+.welcome-noticias h1 span{
+	border: 4px solid #255DBA;
+	position: absolute;
+	width: 60%;
+	z-index: 1;
+	bottom: 0;
+
 }
 
 .welcome-noticia{
 	width: 20rem;
 	color: #000;
 	height: 21.6rem;
+	box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
 	max-height: 21.6rem;
 	text-decoration: none;
 	background: #fff;
 	font-family: 'Century Gothic', sans-serif;
 	transition: 0.4s;
-	margin: 0 1%;
+	margin: 0 1% 40px;
 }
 
 .welcome-noticia h4{
@@ -310,7 +357,8 @@ body::-webkit-scrollbar-thumb{
 }
 
 .welcome-noticia:hover{
-	box-shadow: 0 5px 10px rgba(0, 0, 0, .6);
+	box-shadow: 0 5px 12px rgba(0, 0, 0, .7);
+	transform: translateY(-5px);
 	transition: 0.4s;
 }
 
@@ -420,11 +468,12 @@ body::-webkit-scrollbar-thumb{
 	color: #aaa;
 	background: transparent;
 	top: 4px;
-	right: 4px;
+	right: 7px;
 	font-family: 'Century Gothic', sans-serif;
 	font-weight: 700;
 	border-radius: 50%;
 	border: none;
+	font-size: 22px;
 	cursor: pointer;
 	padding: 0px 4px;
 }

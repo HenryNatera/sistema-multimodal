@@ -12,10 +12,10 @@
 @section('content')
     <main style="display: flex; flex-wrap:wrap; justify-content:space-between">
         <div class="card" style="width: 60%;">
-            <div class="card-header">
+            <div class="card-header pb-0">
                 <h5>Resumen de Asignaturas</h5>
             </div>
-            <div class="card-body">
+            <div class="card-body py-1">
                 <ul class="list-group list-group-flush">
                     @foreach ($regulares as $regular)
                         @if ($regular->user_id == Auth::user()->id)

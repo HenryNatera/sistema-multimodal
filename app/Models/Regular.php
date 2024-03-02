@@ -11,25 +11,38 @@ class Regular extends Model
 
     protected $fillable = ['regular_name', 'regular_turno', 'regular_modalidad', 'ragular_trayecto', 'regular_trimestre', 'regular_semestre', 'pnf_id'];
 
-    public function user(){
+    public function user()
+    {
         return $this->belongsTo('App\Models\User');
     }
 
-    public function periodo(){
+    public function periodo()
+    {
         return $this->belongsTo('App\Models\Periodo');
     }
 
-    public function pnf(){
+    public function pnf()
+    {
         return $this->belongsTo('App\Models\Pnf');
     }
 
-    public function regularEvaluation(){
+    public function regularEvaluation()
+    {
         return $this->hasMany('App\Models\RegularEvaluation');
     }
 
-    public function regularHorarios(){
+    public function regularHorarios()
+    {
         return $this->hasMany('App\Models\RegularHorario');
     }
 
+    public function evaluation_plans()
+    {
+        return $this->hasMany('App\Models\EvaluationPlan');
+    }
 
+    public function online_class()
+    {
+        return $this->hasMany('App\Models\OnlineClases');
+    }
 }

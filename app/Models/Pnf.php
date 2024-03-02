@@ -37,4 +37,11 @@ class Pnf extends Model
         return $this->hasMany('App\Models\SolicitudesStudent');
     }
     
+    public function evaluation_plans(){
+        return $this->hasMany('App\Models\EvaluationPlan');
+    }
+
+    public function horarios(){
+        return $this->hasMany('App\Models\Horario');
+    }
 }

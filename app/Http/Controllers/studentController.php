@@ -34,9 +34,9 @@ class studentController extends Controller
         $sems = Semestral_malla::all();
         $aev = AcreditableEvaluation::all();
         $student = Student::where('user_id', Auth::user()->id)->get();
-        $periodo = Periodo::all();
+        $periodo = Periodo::get();
 
-        return view('student/asignaturas', ['acreditable' => $acreditable, 'user' => $user, 'student' => $student], compact('res', 'aev', 'trims', 'sems', 'periodo'));
+        return view('student/asignaturas', ['acreditable' => $acreditable, 'user' => $user, 'student' => $student, 'periodo' => $periodo], compact('res', 'aev', 'trims', 'sems'));
     }
 
     public function regular_data(RegularEvaluation $re)
@@ -60,6 +60,10 @@ class studentController extends Controller
         }
         RegularEvaluation::insert($data);
 
+        Student::where('user_id', Auth::user()->id)->update([
+            'confirm' => 1,
+        ]);
+
 
         return Redirect()->route('student.inscripcion.regulares');
     }
@@ -74,7 +78,9 @@ class studentController extends Controller
     public function solicitudes_show()
     {
         $students = Student::all();
-        return view('solicitudes/solicitudes', compact('students'));
+        $periodo = Periodo::get();
+
+        return view('solicitudes/solicitudes', compact('students', 'periodo'));
     }
 
     public function constancias_certificados(Student $student)
@@ -98,4 +104,6 @@ class studentController extends Controller
 
         return Redirect()->route('student.solicitudes.constacias.show', ['student' => $student]);
     }
+
+
 }

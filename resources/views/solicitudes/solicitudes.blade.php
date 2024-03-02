@@ -26,18 +26,31 @@
                             <li class="list-group-item py-1 " style="border:none;"><a style="color:#000;"
                                     href="{{ route('student.solicitudes.constacias.show', $student) }}">Solicitud de
                                     constacias y certificaciones</a></li>
-                            <li class="list-group-item py-1 " style="border:none;"><a style="color:#000;"
-                                    href="">Solicitud de reingreso</a></li>
-                            <li class="list-group-item py-1 " style="border:none;"><a style="color:#000;"
-                                    href="">Solicitud de cambio de carrera</a></li>
-                            <li class="list-group-item py-1 " style="border:none;"><a style="color:#000;"
-                                    href="">Solicitud de retiro de asignaturas</a></li>
-                            <li class="list-group-item py-1 " style="border:none;"><a style="color:#000;"
-                                    href="">Solicitud de titulo</a></li>
-                            <li class="list-group-item py-1 " style="border:none;"><a style="color:#000;"
-                                    href="">Solicitud de pasantias</a></li>
-                            <li class="list-group-item py-1 " style="border:none;"><a style="color:#000;"
-                                    href="">Solicitud de</a></li>
+                                    @foreach ($periodo as $p)
+                                        
+                            @if ($p->solicitud == 1)
+                                <li class="list-group-item py-1 " style="border:none;"><a style="color:#000;"
+                                        href="">Solicitud de reingreso</a></li>
+                                <li class="list-group-item py-1 " style="border:none;"><a style="color:#000;"
+                                        href="">Solicitud de cambio de carrera</a></li>
+                                <li class="list-group-item py-1 " style="border:none;"><a style="color:#000;"
+                                        href="">Solicitud de retiro de asignaturas</a></li>
+                                <li class="list-group-item py-1 " style="border:none;"><a style="color:#000;"
+                                        href="">Solicitud de titulo</a></li>
+                                <li class="list-group-item py-1 " style="border:none;"><a style="color:#000;"
+                                        href="">Solicitud de pasantias</a></li>
+                                <li class="list-group-item py-1 " style="border:none;"><a style="color:#000;"
+                                        href="">Solicitud de</a></li>
+                            @else
+                            <li class="list-group-item py-1 " style="border:none;">Solicitud de reingreso</li>
+                        <li class="list-group-item py-1 " style="border:none;">Solicitud de cambio de carrera</li>
+                        <li class="list-group-item py-1 " style="border:none;">Solicitud de retiro de asignaturas</li>
+                        <li class="list-group-item py-1 " style="border:none;">Solicitud de titulo</li>
+                        <li class="list-group-item py-1 " style="border:none;">Solicitud de pasantias</li>
+                        <li class="list-group-item py-1 " style="border:none;">Solicitud de</li>
+                            @endif
+                            @endforeach
+
                         </ul>
                     </div>
                 @endif

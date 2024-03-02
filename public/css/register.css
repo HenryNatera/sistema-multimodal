@@ -1,0 +1,43 @@
+.register-online-container{
+    font-family: 'Arual', sans-serif;
+    margin: 8% 0;
+    box-shadow: 0 0 5px rgba(0, 0, 0, .4);
+    width: 30%;
+    background: #fff;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.register-online-h2{
+    background: #255dba;
+    font-size: 19px;
+    padding: 2px 0;
+    text-align: center;
+    color: #fff;
+    width: 100%;
+}
+
+.register-online-form{
+    padding: 7px 5px;
+    width: 100%;
+}
+
+.register-n-a{
+    width: 100%;
+    border:1px solid red;
+}
+
+.register-n{
+    margin-bottom: 10px;
+}
+
+.register-n label{
+    font-weight: 700;
+}
+
+.register-n input{
+    outline: none;
+    font-size: 13px;
+    padding: 2px;
+}
+

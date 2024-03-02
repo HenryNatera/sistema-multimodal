@@ -77,6 +77,10 @@ class User extends Authenticatable
     public function noticias(){
         return $this->hasMany('App\Models\Noticia');
     }
+
+    public function evaluation_plans(){
+        return $this->hasMany('App\Models\EvaluationPlan');
+    }
     
 
 }

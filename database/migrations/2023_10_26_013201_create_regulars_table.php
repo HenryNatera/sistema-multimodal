@@ -13,16 +13,17 @@ return new class extends Migration
     {
         Schema::create('regulars', function (Blueprint $table) {
             $table->id();
+            $table->integer('malla');
             $table->string('regular_name');
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')
                         ->references('id')->on('users')
                         ->onDelete('set null');
             $table->string('regular_turno')->nullable();
-            $table->string('regular_modalidad')->nullable();
-            $table->string('regular_trayecto')->nullable();
-            $table->string('regular_trimestre')->nullable();
-            $table->string('regular_semestre')->nullable();
+            $table->integer('regular_modalidad')->nullable();
+            $table->integer('regular_trayecto')->nullable();
+            $table->integer('regular_trimestre')->nullable();
+            $table->integer('regular_semestre')->nullable();
             $table->unsignedBigInteger('pnf_id')->nullable();
             $table->foreign('pnf_id')
                          ->references('id')->on('pnfs')

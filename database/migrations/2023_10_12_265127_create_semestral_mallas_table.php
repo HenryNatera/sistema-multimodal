@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('semestral_mallas', function (Blueprint $table) {
             $table->id();
+            $table->integer('num');
             $table->unsignedBigInteger('pnf_id')->nullable();
             $table->foreign('pnf_id')
                         ->references('id')->on('pnfs')

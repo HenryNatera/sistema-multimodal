@@ -14,11 +14,11 @@
         }
 
         div::-webkit-scrollbar-track {
-            background: #ddd;
+            background: 0ddd;
         }
 
         div::-webkit-scrollbar-thumb {
-            background: #999;
+            background: 0999;
         }
 
         .trim {
@@ -33,6 +33,9 @@
 @section('content')
     <h5 class="w-100">Oferta Academica</h5>
 
+    @foreach ($periodos as $p)
+        
+    @if ($p->revision == 1)
     <main style="display: flex; flex-wrap:wrap; align-items:flex-start; justify-content:space-evenly">
         @foreach ($pnf as $oa)
             @if ($oa->malla_tipo == 'trimestral')
@@ -58,18 +61,32 @@
                                         <th>Trimestre I</th>
                                     </tr>
                                     @foreach ($trimestral_mallas as $trim)
-                                        @if ($trim->uc_i != '' && $trim->trayecto == 'i' && $oa->id == $trim->pnf_id)
+                                        @if ($trim->uc_i != '' && $trim->trayecto == 1 && $oa->id == $trim->pnf_id)
+                                                <input type="hidden" name="pnf_malla[]" value="{{ $oa->malla }}">
+                                            @php
+                                                $string = $trim->unidad_curricular;
+                                                $words = strtok($string, ' ');
+                                                $acronym = '';
+
+                                                while ($words !== false) {
+                                                    $acronym .= substr($words, 0, 1);
+                                                    $words = strtok(' ');
+                                                }
+
+                                            @endphp
                                             <tr>
-                                                <td class="py-0">{{ $trim->id }}</td>
+                                                <td class="py-0">
+                                                    {{ $trim->pnf->pnf_inicial }}{{ $acronym }}{{ $trim->id }}</td>
                                                 <input type="hidden" name="trayecto[]" value="{{ $trim->trayecto }}">
                                                 <input type="hidden" name="pnf_id[]" value="{{ $oa->id }}">
+                                                <input type="hidden" name="pnf_malla[]" value="{{ $oa->malla }}">
                                                 <td class="py-0"><input type="text" name="regular_name[]"
                                                         value="{{ $trim->unidad_curricular }}"></td>
                                                 <td class="py-0"><input type="text" style="width:5rem;"
-                                                        name="modalidad[]" value="mixta"></td>
+                                                        name="modalidad[]" value="2"></td>
                                                 <td class="py-0"><input type="text" style="width:2rem;"
                                                         name="trimestre[]" value="1"></td>
-                                                <input type="hidden" name="semestre[]" value="#">
+                                                <input type="hidden" name="semestre[]" value="0">
                                             </tr>
                                         @endif
                                     @endforeach
@@ -79,18 +96,31 @@
                                         <th>Trimestre II</th>
                                     </tr>
                                     @foreach ($trimestral_mallas as $trim)
-                                        @if ($trim->uc_ii != '' && $trim->trayecto == 'i' && $oa->id == $trim->pnf_id)
+                                        @if ($trim->uc_ii != '' && $trim->trayecto == 1 && $oa->id == $trim->pnf_id)
+                                                <input type="hidden" name="pnf_malla[]" value="{{ $oa->malla }}">
+                                            @php
+                                                $string = $trim->unidad_curricular;
+                                                $words = strtok($string, ' ');
+                                                $acronym = '';
+
+                                                while ($words !== false) {
+                                                    $acronym .= substr($words, 0, 1);
+                                                    $words = strtok(' ');
+                                                }
+
+                                            @endphp
                                             <tr>
-                                                <td class="py-0">{{ $trim->id }}</td>
+                                                <td class="py-0">{{ $trim->pnf->pnf_inicial }}{{ $acronym }}{{ $trim->id }}</td>
                                                 <input type="hidden" name="trayecto[]" value="{{ $trim->trayecto }}">
                                                 <input type="hidden" name="pnf_id[]" value="{{ $oa->id }}">
+                                                <input type="hidden" name="pnf_malla[]" value="{{ $oa->malla }}">
                                                 <td class="py-0"><input type="text" name="regular_name[]"
                                                         value="{{ $trim->unidad_curricular }}"></td>
                                                 <td class="py-0"><input type="text" style="width:5rem;"
-                                                        name="modalidad[]" value="mixta"></td>
+                                                        name="modalidad[]" value="2"></td>
                                                 <td class="py-0"><input type="text" style="width:2rem;"
                                                         name="trimestre[]" value="2"></td>
-                                                <input type="hidden" name="semestre[]" value="#">
+                                                <input type="hidden" name="semestre[]" value="0">
                                             </tr>
                                         @endif
                                     @endforeach
@@ -100,18 +130,31 @@
                                         <th>Trimestre III</th>
                                     </tr>
                                     @foreach ($trimestral_mallas as $trim)
-                                        @if ($trim->uc_iii != '' && $trim->trayecto == 'i' && $oa->id == $trim->pnf_id)
+                                        @if ($trim->uc_iii != '' && $trim->trayecto == 1 && $oa->id == $trim->pnf_id)
+                                                <input type="hidden" name="pnf_malla[]" value="{{ $oa->malla }}">
+                                            @php
+                                                $string = $trim->unidad_curricular;
+                                                $words = strtok($string, ' ');
+                                                $acronym = '';
+
+                                                while ($words !== false) {
+                                                    $acronym .= substr($words, 0, 1);
+                                                    $words = strtok(' ');
+                                                }
+
+                                            @endphp
                                             <tr>
-                                                <td class="py-0">{{ $trim->id }}</td>
+                                                <td class="py-0">{{ $trim->pnf->pnf_inicial }}{{ $acronym }}{{ $trim->id }}</td>
                                                 <input type="hidden" name="trayecto[]" value="{{ $trim->trayecto }}">
                                                 <input type="hidden" name="pnf_id[]" value="{{ $oa->id }}">
+                                                <input type="hidden" name="pnf_malla[]" value="{{ $oa->malla }}">
                                                 <td class="py-0"><input type="text" name="regular_name[]"
                                                         value="{{ $trim->unidad_curricular }}"></td>
                                                 <td class="py-0"><input type="text" style="width:5rem;"
-                                                        name="modalidad[]" value="mixta"></td>
+                                                        name="modalidad[]" value="2"></td>
                                                 <td class="py-0"><input type="text" style="width:2rem;"
                                                         name="trimestre[]" value="3"></td>
-                                                <input type="hidden" name="semestre[]" value="#">
+                                                <input type="hidden" name="semestre[]" value="0">
                                             </tr>
                                         @endif
                                     @endforeach
@@ -140,18 +183,31 @@
                                         <th>Trimestre I</th>
                                     </tr>
                                     @foreach ($trimestral_mallas as $trim)
-                                        @if ($trim->uc_i != '' && $trim->trayecto == 'ii' && $oa->id == $trim->pnf_id)
+                                        @if ($trim->uc_i != '' && $trim->trayecto == 2 && $oa->id == $trim->pnf_id)
+                                                <input type="hidden" name="pnf_malla[]" value="{{ $oa->malla }}">
+                                            @php
+                                                $string = $trim->unidad_curricular;
+                                                $words = strtok($string, ' ');
+                                                $acronym = '';
+
+                                                while ($words !== false) {
+                                                    $acronym .= substr($words, 0, 1);
+                                                    $words = strtok(' ');
+                                                }
+
+                                            @endphp
                                             <tr>
-                                                <td class="py-0">{{ $trim->id }}</td>
+                                                <td class="py-0">{{ $trim->pnf->pnf_inicial }}{{ $acronym }}{{ $trim->id }}</td>
                                                 <input type="hidden" name="trayecto[]" value="{{ $trim->trayecto }}">
                                                 <input type="hidden" name="pnf_id[]" value="{{ $oa->id }}">
+                                                <input type="hidden" name="pnf_malla[]" value="{{ $oa->malla }}">
                                                 <td class="py-0"><input type="text" name="regular_name[]"
                                                         value="{{ $trim->unidad_curricular }}"></td>
                                                 <td class="py-0"><input type="text" style="width:5rem;"
-                                                        name="modalidad[]" value="mixta"></td>
+                                                        name="modalidad[]" value="2"></td>
                                                 <td class="py-0"><input type="text" style="width:2rem;"
                                                         name="trimestre[]" value="1"></td>
-                                                <input type="hidden" name="semestre[]" value="#">
+                                                <input type="hidden" name="semestre[]" value="0">
                                             </tr>
                                         @endif
                                     @endforeach
@@ -161,18 +217,31 @@
                                         <th>Trimestre II</th>
                                     </tr>
                                     @foreach ($trimestral_mallas as $trim)
-                                        @if ($trim->uc_ii != '' && $trim->trayecto == 'ii' && $oa->id == $trim->pnf_id)
+                                        @if ($trim->uc_ii != '' && $trim->trayecto == 2 && $oa->id == $trim->pnf_id)
+                                                <input type="hidden" name="pnf_malla[]" value="{{ $oa->malla }}">
+                                            @php
+                                                $string = $trim->unidad_curricular;
+                                                $words = strtok($string, ' ');
+                                                $acronym = '';
+
+                                                while ($words !== false) {
+                                                    $acronym .= substr($words, 0, 1);
+                                                    $words = strtok(' ');
+                                                }
+
+                                            @endphp
                                             <tr>
-                                                <td class="py-0">{{ $trim->id }}</td>
+                                                <td class="py-0">{{ $trim->pnf->pnf_inicial }}{{ $acronym }}{{ $trim->id }}</td>
                                                 <input type="hidden" name="trayecto[]" value="{{ $trim->trayecto }}">
                                                 <input type="hidden" name="pnf_id[]" value="{{ $oa->id }}">
+                                                <input type="hidden" name="pnf_malla[]" value="{{ $oa->malla }}">
                                                 <td class="py-0"><input type="text" name="regular_name[]"
                                                         value="{{ $trim->unidad_curricular }}"></td>
                                                 <td class="py-0"><input type="text" style="width:5rem;"
-                                                        name="modalidad[]" value="mixta"></td>
+                                                        name="modalidad[]" value="2"></td>
                                                 <td class="py-0"><input type="text" style="width:2rem;"
                                                         name="trimestre[]" value="2"></td>
-                                                <input type="hidden" name="semestre[]" value="#">
+                                                <input type="hidden" name="semestre[]" value="0">
                                             </tr>
                                         @endif
                                     @endforeach
@@ -182,18 +251,31 @@
                                         <th>Trimestre III</th>
                                     </tr>
                                     @foreach ($trimestral_mallas as $trim)
-                                        @if ($trim->uc_iii != '' && $trim->trayecto == 'ii' && $oa->id == $trim->pnf_id)
+                                        @if ($trim->uc_iii != '' && $trim->trayecto == 2 && $oa->id == $trim->pnf_id)
+                                                <input type="hidden" name="pnf_malla[]" value="{{ $oa->malla }}">
+                                            @php
+                                                $string = $trim->unidad_curricular;
+                                                $words = strtok($string, ' ');
+                                                $acronym = '';
+
+                                                while ($words !== false) {
+                                                    $acronym .= substr($words, 0, 1);
+                                                    $words = strtok(' ');
+                                                }
+
+                                            @endphp
                                             <tr>
-                                                <td class="py-0">{{ $trim->id }}</td>
+                                                <td class="py-0">{{ $trim->pnf->pnf_inicial }}{{ $acronym }}{{ $trim->id }}</td>
                                                 <input type="hidden" name="trayecto[]" value="{{ $trim->trayecto }}">
                                                 <input type="hidden" name="pnf_id[]" value="{{ $oa->id }}">
+                                                <input type="hidden" name="pnf_malla[]" value="{{ $oa->malla }}">
                                                 <td class="py-0"><input type="text" name="regular_name[]"
                                                         value="{{ $trim->unidad_curricular }}"></td>
                                                 <td class="py-0"><input type="text" style="width:5rem;"
-                                                        name="modalidad[]" value="mixta"></td>
+                                                        name="modalidad[]" value="2"></td>
                                                 <td class="py-0"><input type="text" style="width:2rem;"
                                                         name="trimestre[]" value="3"></td>
-                                                <input type="hidden" name="semestre[]" value="#">
+                                                <input type="hidden" name="semestre[]" value="0">
                                             </tr>
                                         @endif
                                     @endforeach
@@ -222,18 +304,31 @@
                                         <th>Trimestre I</th>
                                     </tr>
                                     @foreach ($trimestral_mallas as $trim)
-                                        @if ($trim->uc_i != '' && $trim->trayecto == 'iii' && $oa->id == $trim->pnf_id)
+                                        @if ($trim->uc_i != '' && $trim->trayecto == 3 && $oa->id == $trim->pnf_id)
+                                                <input type="hidden" name="pnf_malla[]" value="{{ $oa->malla }}">
+                                            @php
+                                                $string = $trim->unidad_curricular;
+                                                $words = strtok($string, ' ');
+                                                $acronym = '';
+
+                                                while ($words !== false) {
+                                                    $acronym .= substr($words, 0, 1);
+                                                    $words = strtok(' ');
+                                                }
+
+                                            @endphp
                                             <tr>
-                                                <td class="py-0">{{ $trim->id }}</td>
+                                                <td class="py-0">{{ $trim->pnf->pnf_inicial }}{{ $acronym }}{{ $trim->id }}</td>
                                                 <input type="hidden" name="trayecto[]" value="{{ $trim->trayecto }}">
                                                 <input type="hidden" name="pnf_id[]" value="{{ $oa->id }}">
+                                                <input type="hidden" name="pnf_malla[]" value="{{ $oa->malla }}">
                                                 <td class="py-0"><input type="text" name="regular_name[]"
                                                         value="{{ $trim->unidad_curricular }}"></td>
                                                 <td class="py-0"><input type="text" style="width:5rem;"
-                                                        name="modalidad[]" value="mixta"></td>
+                                                        name="modalidad[]" value="2"></td>
                                                 <td class="py-0"><input type="text" style="width:2rem;"
                                                         name="trimestre[]" value="1"></td>
-                                                <input type="hidden" name="semestre[]" value="#">
+                                                <input type="hidden" name="semestre[]" value="0">
                                             </tr>
                                         @endif
                                     @endforeach
@@ -243,18 +338,31 @@
                                         <th>Trimestre II</th>
                                     </tr>
                                     @foreach ($trimestral_mallas as $trim)
-                                        @if ($trim->uc_ii != '' && $trim->trayecto == 'iii' && $oa->id == $trim->pnf_id)
+                                        @if ($trim->uc_ii != '' && $trim->trayecto == 3 && $oa->id == $trim->pnf_id)
+                                                <input type="hidden" name="pnf_malla[]" value="{{ $oa->malla }}">
+                                            @php
+                                                $string = $trim->unidad_curricular;
+                                                $words = strtok($string, ' ');
+                                                $acronym = '';
+
+                                                while ($words !== false) {
+                                                    $acronym .= substr($words, 0, 1);
+                                                    $words = strtok(' ');
+                                                }
+
+                                            @endphp
                                             <tr>
-                                                <td class="py-0">{{ $trim->id }}</td>
+                                                <td class="py-0">{{ $trim->pnf->pnf_inicial }}{{ $acronym }}{{ $trim->id }}</td>
                                                 <input type="hidden" name="trayecto[]" value="{{ $trim->trayecto }}">
                                                 <input type="hidden" name="pnf_id[]" value="{{ $oa->id }}">
+                                                <input type="hidden" name="pnf_malla[]" value="{{ $oa->malla }}">
                                                 <td class="py-0"><input type="text" name="regular_name[]"
                                                         value="{{ $trim->unidad_curricular }}"></td>
                                                 <td class="py-0"><input type="text" style="width:5rem;"
-                                                        name="modalidad[]" value="mixta"></td>
+                                                        name="modalidad[]" value="2"></td>
                                                 <td class="py-0"><input type="text" style="width:2rem;"
                                                         name="trimestre[]" value="2"></td>
-                                                <input type="hidden" name="semestre[]" value="#">
+                                                <input type="hidden" name="semestre[]" value="0">
                                             </tr>
                                         @endif
                                     @endforeach
@@ -264,18 +372,31 @@
                                         <th>Trimestre III</th>
                                     </tr>
                                     @foreach ($trimestral_mallas as $trim)
-                                        @if ($trim->uc_iii != '' && $trim->trayecto == 'iii' && $oa->id == $trim->pnf_id)
+                                        @if ($trim->uc_iii != '' && $trim->trayecto == 3 && $oa->id == $trim->pnf_id)
+                                                <input type="hidden" name="pnf_malla[]" value="{{ $oa->malla }}">
+                                            @php
+                                                $string = $trim->unidad_curricular;
+                                                $words = strtok($string, ' ');
+                                                $acronym = '';
+
+                                                while ($words !== false) {
+                                                    $acronym .= substr($words, 0, 1);
+                                                    $words = strtok(' ');
+                                                }
+
+                                            @endphp
                                             <tr>
-                                                <td class="py-0">{{ $trim->id }}</td>
+                                                <td class="py-0">{{ $trim->pnf->pnf_inicial }}{{ $acronym }}{{ $trim->id }}</td>
                                                 <input type="hidden" name="trayecto[]" value="{{ $trim->trayecto }}">
                                                 <input type="hidden" name="pnf_id[]" value="{{ $oa->id }}">
+                                                <input type="hidden" name="pnf_malla[]" value="{{ $oa->malla }}">
                                                 <td class="py-0"><input type="text" name="regular_name[]"
                                                         value="{{ $trim->unidad_curricular }}"></td>
                                                 <td class="py-0"><input type="text" style="width:5rem;"
-                                                        name="modalidad[]" value="mixta"></td>
+                                                        name="modalidad[]" value="2"></td>
                                                 <td class="py-0"><input type="text" style="width:2rem;"
                                                         name="trimestre[]" value="3"></td>
-                                                <input type="hidden" name="semestre[]" value="#">
+                                                <input type="hidden" name="semestre[]" value="0">
                                             </tr>
                                         @endif
                                     @endforeach
@@ -304,18 +425,31 @@
                                         <th>Trimestre I</th>
                                     </tr>
                                     @foreach ($trimestral_mallas as $trim)
-                                        @if ($trim->uc_i != '' && $trim->trayecto == 'iv' && $oa->id == $trim->pnf_id)
+                                        @if ($trim->uc_i != '' && $trim->trayecto == 4 && $oa->id == $trim->pnf_id)
+                                                <input type="hidden" name="pnf_malla[]" value="{{ $oa->malla }}">
+                                            @php
+                                                $string = $trim->unidad_curricular;
+                                                $words = strtok($string, ' ');
+                                                $acronym = '';
+
+                                                while ($words !== false) {
+                                                    $acronym .= substr($words, 0, 1);
+                                                    $words = strtok(' ');
+                                                }
+
+                                            @endphp
                                             <tr>
-                                                <td class="py-0">{{ $trim->id }}</td>
+                                                <td class="py-0">{{ $trim->pnf->pnf_inicial }}{{ $acronym }}{{ $trim->id }}</td>
                                                 <input type="hidden" name="trayecto[]" value="{{ $trim->trayecto }}">
                                                 <input type="hidden" name="pnf_id[]" value="{{ $oa->id }}">
+                                                <input type="hidden" name="pnf_malla[]" value="{{ $oa->malla }}">
                                                 <td class="py-0"><input type="text" name="regular_name[]"
                                                         value="{{ $trim->unidad_curricular }}"></td>
                                                 <td class="py-0"><input type="text" style="width:5rem;"
-                                                        name="modalidad[]" value="mixta"></td>
+                                                        name="modalidad[]" value="2"></td>
                                                 <td class="py-0"><input type="text" style="width:2rem;"
                                                         name="trimestre[]" value="1"></td>
-                                                <input type="hidden" name="semestre[]" value="#">
+                                                <input type="hidden" name="semestre[]" value="0">
                                             </tr>
                                         @endif
                                     @endforeach
@@ -325,18 +459,31 @@
                                         <th>Trimestre II</th>
                                     </tr>
                                     @foreach ($trimestral_mallas as $trim)
-                                        @if ($trim->uc_ii != '' && $trim->trayecto == 'iv' && $oa->id == $trim->pnf_id)
+                                        @if ($trim->uc_ii != '' && $trim->trayecto == 4 && $oa->id == $trim->pnf_id)
+                                                <input type="hidden" name="pnf_malla[]" value="{{ $oa->malla }}">
+                                            @php
+                                                $string = $trim->unidad_curricular;
+                                                $words = strtok($string, ' ');
+                                                $acronym = '';
+
+                                                while ($words !== false) {
+                                                    $acronym .= substr($words, 0, 1);
+                                                    $words = strtok(' ');
+                                                }
+
+                                            @endphp
                                             <tr>
-                                                <td class="py-0">{{ $trim->id }}</td>
+                                                <td class="py-0">{{ $trim->pnf->pnf_inicial }}{{ $acronym }}{{ $trim->id }}</td>
                                                 <input type="hidden" name="trayecto[]" value="{{ $trim->trayecto }}">
                                                 <input type="hidden" name="pnf_id[]" value="{{ $oa->id }}">
+                                                <input type="hidden" name="pnf_malla[]" value="{{ $oa->malla }}">
                                                 <td class="py-0"><input type="text" name="regular_name[]"
                                                         value="{{ $trim->unidad_curricular }}"></td>
                                                 <td class="py-0"><input type="text" style="width:5rem;"
-                                                        name="modalidad[]" value="mixta"></td>
+                                                        name="modalidad[]" value="2"></td>
                                                 <td class="py-0"><input type="text" style="width:2rem;"
                                                         name="trimestre[]" value="2"></td>
-                                                <input type="hidden" name="semestre[]" value="#">
+                                                <input type="hidden" name="semestre[]" value="0">
                                             </tr>
                                         @endif
                                     @endforeach
@@ -346,18 +493,31 @@
                                         <th>Trimestre III</th>
                                     </tr>
                                     @foreach ($trimestral_mallas as $trim)
-                                        @if ($trim->uc_iii != '' && $trim->trayecto == 'iv' && $oa->id == $trim->pnf_id)
+                                        @if ($trim->uc_iii != '' && $trim->trayecto == 4 && $oa->id == $trim->pnf_id)
+                                                <input type="hidden" name="pnf_malla[]" value="{{ $oa->malla }}">
+                                            @php
+                                                $string = $trim->unidad_curricular;
+                                                $words = strtok($string, ' ');
+                                                $acronym = '';
+
+                                                while ($words !== false) {
+                                                    $acronym .= substr($words, 0, 1);
+                                                    $words = strtok(' ');
+                                                }
+
+                                            @endphp
                                             <tr>
-                                                <td class="py-0">{{ $trim->id }}</td>
+                                                <td class="py-0">{{ $trim->pnf->pnf_inicial }}{{ $acronym }}{{ $trim->id }}</td>
                                                 <input type="hidden" name="trayecto[]" value="{{ $trim->trayecto }}">
                                                 <input type="hidden" name="pnf_id[]" value="{{ $oa->id }}">
+                                                <input type="hidden" name="pnf_malla[]" value="{{ $oa->malla }}">
                                                 <td class="py-0"><input type="text" name="regular_name[]"
                                                         value="{{ $trim->unidad_curricular }}"></td>
                                                 <td class="py-0"><input type="text" style="width:5rem;"
-                                                        name="modalidad[]" value="mixta"></td>
+                                                        name="modalidad[]" value="2"></td>
                                                 <td class="py-0"><input type="text" style="width:2rem;"
                                                         name="trimestre[]" value="3"></td>
-                                                <input type="hidden" name="semestre[]" value="#">
+                                                <input type="hidden" name="semestre[]" value="0">
                                             </tr>
                                         @endif
                                     @endforeach
@@ -393,4 +553,17 @@
         @endforeach
 
     </main>
+        
+    @elseif($p->revision == 0)
+        <div class="card w-50">
+            <div class="card-header">
+                <h6>Fuera de linea</h6>
+            </div>
+            <div class="card-body">
+                <p style="font-size: 12px;">En estos moimentos no se pueden hacer cambios en la oferta academica</p>
+            </div>
+        </div>
+    @endif
+    @endforeach
+
 @stop

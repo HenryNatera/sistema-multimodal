@@ -22,12 +22,10 @@ return new class extends Migration
             $table->foreign('pnf_id')
                         ->references('id')->on('pnfs')
                         ->onDelete('set null');
-            $table->unsignedBigInteger('periodo_id')->nullable();
-            $table->foreign('periodo_id')
-                        ->references('id')->on('periodos')
-                        ->onDelete('set null');
             $table->integer('turno');
-            $table->string('trayecto')->nullable();
+            $table->integer('confirm');
+            $table->integer('malla');
+            $table->integer('trayecto')->nullable();
             $table->string('semestre')->nullable();
             $table->timestamps();
         });

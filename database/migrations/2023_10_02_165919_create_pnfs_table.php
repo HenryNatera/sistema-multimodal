@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('malla_tipo');
             $table->string('pnf_name')->unique();
             $table->string('pnf_inicial')->unique();
+            $table->integer('malla');
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')
                         ->references('id')->on('users')

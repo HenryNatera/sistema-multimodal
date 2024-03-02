@@ -18,7 +18,6 @@
 
             @foreach ($periodo as $p)
                 <p>Trimestre {{ $p->trimestre }}</p>
-            @endforeach
             <table class="table" style="font-size: 14px; border:1px solid rgba(0,0,0,0.2);">
                 <thead>
                     <tr>
@@ -29,7 +28,7 @@
                 </thead>
                 <tbody>
                     @foreach ($res as $re)
-                        @if ($re->regular->periodo->trimestre == $re->regular->regular_trimestre)
+                        @if ($re->regular->regular_trimestre == $p->trimestre)
                             <tr>
                                 <td style="padding: 0 0 0 15px;"><a
                                         href="{{ route('student.regular.data', $re) }}">{{ $re->regular->regular_name }}</a>
@@ -48,6 +47,8 @@
                     @endforeach
                 </tbody>
             </table>
+            @endforeach
+
         </div>
 
         <div class="card-body" style="width: 60%">

@@ -67,7 +67,7 @@
             <div class="list-groupp">
                 @foreach ($pnfs as $pnf)
                     @php
-                        $url = url('utdft/academica/revision/' . $profesor->id . '/' . $pnf->id);
+                        $url = url('academica/revision/' . $profesor->id . '/' . $pnf->id);
                     @endphp
                     <a class="list-group-item list-group-item-action" href="{{ $url }}">{{ $pnf->pnf_name }}</a>
                 @endforeach

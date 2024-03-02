@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pnf;
 use App\Models\Professor;
 use App\Models\Regular;
 use App\Models\RegularEvaluation;
 use App\Models\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class MasterController extends Controller
 {
@@ -19,7 +21,6 @@ class MasterController extends Controller
 
     public function asignatura_data(Regular $regular, Student $student)
     {
-
         $students = Student::all();
         $regularEvaluations = RegularEvaluation::all();
 
@@ -28,15 +29,12 @@ class MasterController extends Controller
 
     public function regular_inscribir(Request $request, Regular $regular)
     {
-
-
         $inscribir = new RegularEvaluation();
 
         $inscribir->user_id = $request->user_id;
         $inscribir->regular_id = $request->regular_id;
 
         $inscribir->save();
-
 
         return Redirect()->route('asignatura.test.data', ['regular' => $regular]);
     }
@@ -45,5 +43,11 @@ class MasterController extends Controller
     {
         $regular = new Regular;
         $regular->pnf_id = $request->pnf_id;
+    }
+
+    public function datos_personales(){
+        $pnf = Pnf::where('user_id', Auth::user()->id)->get();
+        $student = Student::where('user_id', Auth::user()->id)->get();
+        return view('master/datos_personales', compact('pnf', 'student'));
     }
 }

@@ -13,9 +13,22 @@ return new class extends Migration
     {
         Schema::create('periodos', function (Blueprint $table) {
             $table->id();
+            $table->integer('carga');
+            $table->integer('solicitud');
+            $table->integer('resagada');
+            $table->integer('acreditable');
+            $table->integer('pasantia');
+            $table->integer('inscripcion');
+            $table->integer('cambio');
             $table->integer('trimestre');
+            $table->date('trimestral_lapso_inicio')->nullable();
+            $table->date('trimestral_lapso_cierre')->nullable();
             $table->integer('semestre');
-            $table->integer('carga_notas');
+            $table->date('semestral_lapso_inicio')->nullable();
+            $table->date('semestral_lapso_cierre')->nullable();
+            $table->integer('revision');
+            $table->integer('lapso_trimestral');
+            $table->integer('lapso_semestral');
             $table->timestamps();
         });
     }

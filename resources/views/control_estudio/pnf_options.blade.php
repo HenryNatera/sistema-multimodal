@@ -32,7 +32,7 @@
                         @foreach ($pnfs as $pnf)
                             <tr>
                                 @php
-                                    $url = url('utdft/oferta_academica/' . $user->id . '/' . $pnf->id);
+                                    $url = url('oferta_academica/' . $user->id . '/' . $pnf->id);
                                 @endphp
                                 <td class="py-1"><a class="text-dark" href="{{ $url }}">{{ $pnf->id }}</a>
                                 </td>
@@ -52,4 +52,30 @@
             </div>
         </div>
     </main>
+@stop
+
+@section('js')
+    <script>
+        document.oncontextmenu = function() {
+            return false
+        }
+        // Deshabilitar el menú contextual
+        window.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+
+        // Deshabilitar la tecla F12
+        window.addEventListener('keydown', function(e) {
+            if (e.key === 'F12') {
+                e.preventDefault();
+            }
+        });
+
+        // Deshabilitar la tecla Ctrl
+        window.addEventListener('keydown', function(e) {
+            if (e.ctrlKey) {
+                e.preventDefault();
+            }
+        });
+    </script>
 @stop

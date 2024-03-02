@@ -3,14 +3,24 @@
 @section('title', 'Profesores')
 
 @section('content_header')
-    <h1  style="font-size: 20px">Registro de Profesores</h1>
+<span></span>
 @stop
 @section('css')
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
 @stop
 
 @section('content')
-<main style="display: flex; flex-wrap:wrap; justify-content:center">
+<div class="card w-25">
+    <div class="card-header">
+        <h2 style="font-size: 18px;">Registrar nuevo Docente</h2></div>
+    <div class="card-body py-1">
+        <a href="{{route('docencia.profesores.register')}}" class="btn py-0 btn-dark">Registro</a>
+    </div>
+</div>
+
+<main style="display: flex; flex-wrap:wrap; justify-content:center" class="mt-5">
+<h1  style="font-size: 18px" class="w-75 mb-3 ">Registro del Personal Docente</h1>
+
     <div class="card w-75">
         <div class="card-body">
             <table class="table table-bordered" id="profesores" style="font-size: 13px;">

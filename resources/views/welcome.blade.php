@@ -12,9 +12,10 @@
 <body>
 
     <div class="welcome-the-login-container" id="loginform">
+        <button class="welcome-the-login-x" id="loginx">&#10006</button>
+
         <form action="{{ route('login') }}" method="POST" id="theloginform" class="welcome-the-login-form">
             @csrf
-            <button class="welcome-the-login-x" id="loginx">&#10006</button>
             <h3 class="welcome-the-login-h3">Acceso Estudiantes y Docentes</h3>
             @error('cedula')
                 <span class="welcome-the-login-error" style="font-size:13px; color:red;">Credenciales invalidas</span><br>
@@ -86,6 +87,13 @@
                     </button>
                 </div>
 
+                <div class="welcome-login">
+                    <button class="welcome-login-a" href="">
+                        <h3 class="welcome-login-a-h3">Solicitudes en Linea</h3>
+                        <p class="welcome-login-a-p">Envia tu solicitud de inscripcion</p>
+                    </button>
+                </div>
+
             </div>
 
 
@@ -109,18 +117,19 @@
 
 
         <div class="welcome-noticias">
-            <h1>Noticias</h1>
-            <div>
-                @foreach ($noticias as $noticia)
-                    <a href="#" class="welcome-noticia">
-                        <div class="img">
-                            <img src="{{ $noticia->image_name }}" alt="">
-                        </div>
-                        <h4>{{ $noticia->titulo }}</h4>
-                        <p>{{ $noticia->descripcion }}</p>
-                    </a>
-                @endforeach
-
+            <h1>Noticias e Informacion <span></span></h1>
+            <div class="noticias_container">
+                <div class="noticias_cocontainer">
+                    @foreach ($noticias as $noticia)
+                        <a href="{{ route('noticia', $noticia) }}" class="welcome-noticia">
+                            <div class="img">
+                                <img src="{{ $noticia->image_name }}" alt="">
+                            </div>
+                            <h4>{{ $noticia->titulo }}</h4>
+                            <p>{{ $noticia->descripcion }}</p>
+                        </a>
+                    @endforeach
+                </div>
             </div>
     </main>
     <footer class="welcome-footer">
@@ -155,6 +164,14 @@
 
         login_btn.addEventListener('click', showlogin);
         loginx.addEventListener('click', hiddenlogin);
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                var elemento = document.getElementById(
+                    'loginform');
+                elemento.style.display = 'none';
+            }
+        });
     </script>
 </body>
 

@@ -15,27 +15,30 @@ class RegularSeeder extends Seeder
     {
         Regular::create([
             'regular_name' => 'matematicas',
+            'malla' => 1,
             'user_id' => '6',
             'regular_modalidad' => '1',
-            'regular_trayecto' => 'ii',
+            'regular_trayecto' => 2,
             'pnf_id' => 1,
             'periodo_id' => 1,
         ]);
 
         Regular::create([
             'regular_name' => 'ingles',
+            'malla' => 1,
             'user_id' => '7',
             'regular_modalidad' => '1',
-            'regular_trayecto' => 'ii',
+            'regular_trayecto' => 2,
             'pnf_id' => 2,
             'periodo_id' => 1,
         ]);
 
         Regular::create([
             'regular_name' => 'programacion',
+            'malla' => 1,
             'user_id' => '8',
             'regular_modalidad' => '2',
-            'regular_trayecto' => 'ii',
+            'regular_trayecto' => 2,
             'pnf_id' => 3,
             'periodo_id' => 1,
         ]);

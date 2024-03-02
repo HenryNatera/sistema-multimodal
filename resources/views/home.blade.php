@@ -19,12 +19,14 @@
                 <p style="font-size: 15px">{{ Auth::user()->cedula }}</p>
             </div>
         </div>
-        @if (Auth::user()->role == 'Estudiante')
+        @if (Auth::user()->hasRole('Estudiante'))
             <div class="card" style="width: 12rem">
                 <div class="card-body">
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item" style="padding:10px 0; font-size: 14px"><a style="color:#000;"
-                                href="" class="card-text">Historial Academico</a></li>
+                        <li class="list-group-item" style="padding:10px 0; font-size: 14px">
+                            <a style="color:#000;" target="_blak" href="{{ route('solicitud.historial') }}"
+                                class="card-text">Historial Academico</a>
+                        </li>
                         <li class="list-group-item" style="padding:10px 0; font-size: 14px"><a style="color:#000;"
                                 href="" class="card-text">Record Academico</a></li>
                         <li class="list-group-item" style="padding:10px 0; font-size: 14px"><a style="color:#000;"
@@ -43,4 +45,30 @@
             </div>
         </a>
     </main>
+@stop
+
+@section('js')
+    <script>
+        document.oncontextmenu = function() {
+            return false
+        }
+        // Deshabilitar el menú contextual
+        window.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+
+        // Deshabilitar la tecla F12
+        window.addEventListener('keydown', function(e) {
+            if (e.key === 'F12') {
+                e.preventDefault();
+            }
+        });
+
+        // Deshabilitar la tecla Ctrl
+        window.addEventListener('keydown', function(e) {
+            if (e.ctrlKey) {
+                e.preventDefault();
+            }
+        });
+    </script>
 @stop

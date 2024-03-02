@@ -13,12 +13,13 @@ return new class extends Migration
     {
         Schema::create('trimestral_mallas', function (Blueprint $table) {
             $table->id();
+            $table->integer('num');
             $table->unsignedBigInteger('pnf_id')->nullable();
             $table->foreign('pnf_id')
                         ->references('id')->on('pnfs')
                         ->onDelete('set null');
             $table->string('unidad_curricular');
-            $table->string('trayecto');
+            $table->integer('trayecto');
             $table->string('trimestre_i')->nullable();
             $table->string('uc_i')->nullable();
             $table->string('trimestre_ii')->nullable();
